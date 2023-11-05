@@ -1,8 +1,9 @@
+import AboutUs from "./AboutUs";
+
 const Home = () => {
     return (
         <div>
-           
-            <h2>This is Home</h2>
+            <AboutUs></AboutUs>
         </div>
     );
 };
