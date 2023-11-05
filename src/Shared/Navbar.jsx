@@ -1,5 +1,7 @@
-import { BsTelephone } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import { Banner} from 'flowbite-react';
+import { HiX } from 'react-icons/hi';
+import { BsTelephone } from "react-icons/bs";
 const Navbar = () => {
     const menus = <>
         <li><NavLink
@@ -27,27 +29,29 @@ const Navbar = () => {
     </>
 
     return (
-        <div >
+        <div>
             {/* Donate part */}
-            <div className="hidden bg-[#11444E] lg:block">
-                <div className="navbar container mx-auto">
-                    <div className="flex-1">
-                        <div className="flex items-center gap-3 text-white font-bold">
-                            {/* <IoLocationSharp className="text-lg"></IoLocationSharp> */}
-                            {/* <p className="md:text-md">123 Main Street Chicago, IL 60601 USA</p> */}
-                            <BsTelephone></BsTelephone>
-                            <p >+1 (312) 555-1234</p>
+            <section className="container mx-auto">
+                <Banner>
+                    <div className="flex w-[calc(100%-2rem)] flex-col justify-between rounded-lg border m-5 lg:mx-5 xl:mx-32 border-gray-100 bg-[#1FAF4B] text-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-700 md:flex-row lg:max-w-7xl">
+                        <div className="mb-3 mr-4 flex flex-col items-start md:mb-0 md:flex-row md:items-center">
+                            <p className="flex items-center mb-2 border-gray-200 md:pr-4 md:mr-4 md:border-r md:mb-0 dark:border-gray-600">
+                                <BsTelephone></BsTelephone>
+                                <p >+1 (312) 555-1234</p>
+                            </p>
+                            <p className="flex items-center text-sm font-normal dark:text-gray-400">
+                                Your generosity can make a world of difference in the lives of those struggling with hunger. 
+                            </p>
+                        </div>
+                        <div className="flex flex-shrink-0 items-center">
+                            <button className="btn btn-secondary btn-sm normal-case mr-10">Donation Now</button>
+                            <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+                                <HiX className="h-4 w-4" />
+                            </Banner.CollapseButton>
                         </div>
                     </div>
-                    <div className="gap-5">
-                        <div className="flex-none ml-3">
-                            <button className="btn btn-primary bg-[#1FAF4B] text-white btn-md rounded-full">Donate Now</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <hr />
+                </Banner>
+            </section>
             {/* logo part */}
             <div className="navbar container mx-auto">
                 {/* Desktop search button */}
