@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "name": "swiper-react-keyboard-control",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -18,7 +19,8 @@
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.18.0",
     "sort-by": "^1.2.0",
-    "swiper": "^11.0.3"
+    "swiper": "^11.0.3",
+    "tw-elements-react": "^1.0.0-alpha2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
