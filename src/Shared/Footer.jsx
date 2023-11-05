@@ -43,7 +43,7 @@ const Footer = () => {
                         <nav>
                             <header className="footer-title font-jost">Contact</header>
                             <a className="link link-hover">123 Main Street Chicago, IL 60601 USA </a>
-                            <a className="link link-hover">Customer Care: +1 (312) 555-1234</a>
+                            <a className="link link-hover">Help-Line : +1 (312) 555-1234</a>
                         </nav>
                     </div>
                 </div>

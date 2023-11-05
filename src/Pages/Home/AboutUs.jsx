@@ -11,7 +11,7 @@ const AboutUs = () => {
                             <div className="lg:max-w-md">
                                 <div className="px-4 pl-4 mb-6 border-l-4 border-primary">
                                     <span className="text-sm text-gray-600 uppercase dark:text-gray-400">Who we are?</span>
-                                    <h1 className="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
+                                    <h1 className="mt-2 text-3xl font-black text-gray-700 font-jost md:text-5xl dark:text-gray-300">
                                         About Us
                                     </h1>
                                 </div>
