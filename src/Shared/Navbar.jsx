@@ -72,9 +72,9 @@ const Navbar = () => {
                 </div>
                 {/* logo & Login */}
                 <div className="flex-1 justify-center">
-                    <Link><div className="flex items-center">
+                    <Link to='/'><div className="flex items-center">
                         <img src="https://images2.imgbox.com/de/03/xdiHcwLt_o.png" className="w-20 h-16" alt="Logo" />
-                        <p className=" text-red-950 text-xl font-jost ml-2 lg:text-4xl">SHARE PLATE</p>
+                        <p className="text-xl font-jost ml-2 lg:text-4xl">SHARE PLATE</p>
                     </div></Link>
                 </div>
                 <div className="justify-end divide-y-4">
