@@ -6,7 +6,7 @@ const AvailableFood = () => {
     const [foods, setFoods] = useState([]);
 
     useEffect(() => {
-        fetch('./../../../public/FoodData.json')
+        fetch('http://localhost:5000/foods')
             .then(res => res.json())
             .then(data =>
                 setFoods(data)
@@ -25,7 +25,7 @@ const AvailableFood = () => {
                 <div className="grid md:grid-cols-3 mx-5 gap-4">
                     {
                         foods.map(item => <FoodCard
-                            key={item.id}
+                            key={item._id}
                             food={item}
                         />)
                     }

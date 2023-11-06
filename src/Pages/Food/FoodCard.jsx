@@ -5,7 +5,7 @@ import { FcExpired } from "react-icons/fc";
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
 
 const FoodCard = ({ food }) => {
-    const { foodImage, foodName, foodQuantity, additionalNotes, expiredTime, pickupLocation } = food;
+    const { foodImage, foodName, foodQuantity, additionalNotes, expiredTime, pickupLocation, donatorName, donatorImage } = food;
     const { user } = useContext(AuthContext);
     console.log(user?.displayName );
 
@@ -22,8 +22,8 @@ const FoodCard = ({ food }) => {
                     <div className="flex justify-between">
                         <div className="flex justify-start px-5 md:-mt-12 -mt-8 mb-5">
                             <span>
-                                <img alt={user?.displayName}
-                                    src={user?.photoURL}
+                                <img alt={donatorName}
+                                    src={donatorImage}
                                     className="mx-auto object-cover rounded-full h-24 w-24 bg-white p-1" />
                             </span>
                         </div>
@@ -33,7 +33,7 @@ const FoodCard = ({ food }) => {
                     <div className="">
                         <div className="px-7 mb-8">
                             <h2 className="text-2xl md:text-xl font-bold text-green-800 dark:text-gray-300">{foodName}</h2>
-                            <p className="text-gray-400 mt-2 dark:text-gray-400">{user?.displayName}</p>
+                            <p className="text-gray-400 mt-2 dark:text-gray-400">{donatorName}</p>
                             <p className="mt-2 text-gray-600 dark:text-gray-300">{additionalNotes}</p>
 
                             <div className="p-3 space-y-2">

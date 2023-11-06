@@ -4,96 +4,143 @@
         "foodName": "Homemade Lasagna",
         "foodQuantity": 4,
         "pickupLocation": "New York, NY",
-        "expiredTime": "2 days",
-        "additionalNotes": "Vegetarian, nut-free"
+        "expiredTime": 172800,
+        "additionalNotes": "Vegetarian, nut-free",
+        "donatorName": "Alice Smith",
+        "donatorImage": "https://images.prismic.io/smithae/39c15efa-1fba-4067-9e00-9c6812bd70e3_Picture1.jpg?auto=compress,format",
+        "donatorEmail": "alice.smith@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/76/1d/GHqGESaW_o.jpg",
         "foodName": "Chicken Pot Pie",
         "foodQuantity": 3,
         "pickupLocation": "Los Angeles, CA",
-        "expiredTime": "1 day",
-        "additionalNotes": "Contains gluten"
+        "expiredTime": 86400,
+        "additionalNotes": "Contains gluten",
+        "donatorName": "John Anderson",
+        "donatorImage": "https://catholicfoundation.org.au/wp-content/uploads/2021/08/speaker-john-anderson.jpg",
+        "donatorEmail": "john.anderson@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/e9/d4/CEegvH9p_o.jpg",
         "foodName": "Fresh Fruit Salad",
         "foodQuantity": 9,
         "pickupLocation": "Chicago, IL",
-        "expiredTime": "3 hours",
-        "additionalNotes": "Vegan, no added sugar"
+        "expiredTime": 10800,
+        "additionalNotes": "Vegan, no added sugar",
+        "donatorName": "Emily Johnson",
+        "donatorImage": "https://stoneridgesoftware.com/wp-content/uploads/2022/10/Emily-Johnson-Profile.jpg",
+        "donatorEmail": "emily.johnson@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/d0/21/CQ3anPmd_o.jpg",
         "foodName": "Spaghetti Bolognese",
         "foodQuantity": 5,
         "pickupLocation": "Houston, TX",
-        "expiredTime": "2 days",
-        "additionalNotes": "Contains dairy"
+        "expiredTime": 172800,
+        "additionalNotes": "Contains dairy",
+        "donatorName": "John Anderson",
+        "donatorImage": "https://catholicfoundation.org.au/wp-content/uploads/2021/08/speaker-john-anderson.jpg",
+        "donatorEmail": "john.anderson@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/dc/01/qcwY7dYK_o.jpg",
         "foodName": "Cheese and Charcuterie Platter",
-        "foodQuantity": 8,
+        "foodQuantity": 14,
         "pickupLocation": "Phoenix, AZ",
-        "expiredTime": "4 hours",
-        "additionalNotes": "Assorted cheeses"
+        "expiredTime": 14400,
+        "additionalNotes": "Assorted cheeses",
+        "donatorName": "Emily Johnson",
+        "donatorImage": "https://stoneridgesoftware.com/wp-content/uploads/2022/10/Emily-Johnson-Profile.jpg",
+        "donatorEmail": "emily.johnson@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/6b/41/YqvssV1G_o.jpg",
         "foodName": "Vegetable Stir-Fry",
         "foodQuantity": 4,
         "pickupLocation": "Philadelphia, PA",
-        "expiredTime": "1 day",
-        "additionalNotes": "Gluten-free, dairy-free"
+        "expiredTime": 86400,
+        "additionalNotes": "Gluten-free, dairy-free",
+        "donatorName": "Alice Smith",
+        "donatorImage": "https://images.prismic.io/smithae/39c15efa-1fba-4067-9e00-9c6812bd70e3_Picture1.jpg?auto=compress,format",
+        "donatorEmail": "alice.smith@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/7b/da/DIaSgBqK_o.jpg",
         "foodName": "Pumpkin Pie",
         "foodQuantity": 6,
         "pickupLocation": "Miami, FL",
-        "expiredTime": "5 hours",
-        "additionalNotes": "Seasonal dessert"
+        "expiredTime": 18000,
+        "additionalNotes": "Seasonal dessert",
+        "donatorName": "Daniel White",
+        "donatorImage": "https://pbs.twimg.com/profile_images/1234941196419686400/7PEmeAas_400x400.jpg",
+        "donatorEmail": "daniel.white@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/aa/6d/ajfXNSHS_o.jpeg",
         "foodName": "Beef Tacos",
         "foodQuantity": 7,
         "pickupLocation": "Denver, CO",
-        "expiredTime": "3 hours",
-        "additionalNotes": "Spicy salsa included"
+        "expiredTime": 10800,
+        "additionalNotes": "Spicy salsa included",
+        "donatorName": "James Smith",
+        "donatorImage": "https://www.dewv.edu/wp-content/uploads/2020/07/James-Smith.png",
+        "donatorEmail": "james.smith@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/68/5f/Pep4Xfkj_o.jpg",
         "foodName": "Mushroom Risotto",
         "foodQuantity": 4,
         "pickupLocation": "Dallas, TX",
-        "expiredTime": "2 days",
-        "additionalNotes": "Vegetarian"
+        "expiredTime": 172800,
+        "additionalNotes": "Vegetarian",
+        "donatorName": "Maria Hernandez",
+        "donatorImage": "https://www.redlands.edu/contentassets/d4226c755975478686f0311a9719645d/maria_hernandez_fm_staff_20210326_cm-197.jpg",
+        "donatorEmail": "maria.hernandez@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/73/cc/UWztbfNp_o.jpg",
         "foodName": "Chocolate Chip Cookies",
         "foodQuantity": 12,
         "pickupLocation": "San Francisco, CA",
-        "expiredTime": "6 hours",
-        "additionalNotes": "Freshly baked"
+        "expiredTime": 21600,
+        "additionalNotes": "Freshly baked",
+        "donatorName": "James Smith",
+        "donatorImage": "https://www.dewv.edu/wp-content/uploads/2020/07/James-Smith.png",
+        "donatorEmail": "james.smith@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/3a/df/MJeOmbd2_o.jpg",
         "foodName": "Egg Fried Rice",
         "foodQuantity": 11,
         "pickupLocation": "Denver, CO",
-        "expiredTime": "2 days",
-        "additionalNotes": "With veggies and soy sauce"
+        "expiredTime": 172800,
+        "additionalNotes": "With veggies and soy sauce",
+        "donatorName": "Maria Hernandez",
+        "donatorImage": "https://www.redlands.edu/contentassets/d4226c755975478686f0311a9719645d/maria_hernandez_fm_staff_20210326_cm-197.jpg",
+        "donatorEmail": "maria.hernandez@example.com",
+        "donationMoney": 0
     },
     {
         "foodImage": "https://images2.imgbox.com/72/c9/cSZ41Cvg_o.jpg",
         "foodName": "Lentil Curry",
         "foodQuantity": 10,
         "pickupLocation": "Boston, MA",
-        "expiredTime": "2 days",
-        "additionalNotes": "Spicy and aromatic"
+        "expiredTime": 172800,
+        "additionalNotes": "Spicy and aromatic",
+        "donatorName": "Daniel White",
+        "donatorImage": "https://pbs.twimg.com/profile_images/1234941196419686400/7PEmeAas_400x400.jpg",
+        "donatorEmail": "daniel.white@example.com",
+        "donationMoney": 0
     }
-
 ]
