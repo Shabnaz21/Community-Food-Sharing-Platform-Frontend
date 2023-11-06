@@ -3,18 +3,18 @@ import Swal from "sweetalert2";
 import { useDropzone } from 'react-dropzone';
 
 const AddFood = () => {
-    const handleAddProduct = event => {
+    const handleAddFood = event => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
-        const brand = form.brand.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const type = form.type.value;
-        const description = form.description.value;
-        const photo = form.photo.value;
-        const newProduct = { name, brand, price, rating, type, description, photo }
-        console.log(newProduct);
+        const foodName = form.FName.value;
+        const foodPhoto = form.FPhoto.value;
+        const quantity = form.quantity.value;
+        const foodStatus = form.status.value;
+        const pickup = form.pickup.value;
+        const expired = form.expired.value;
+        const notes = form.notes.value;
+        const newFood = { foodName, foodPhoto, quantity, expired,foodStatus,pickup,notes }
+        console.log(newFood);
         form.reset();
     }
     function DropzoneWithoutKeyboard(props) {
@@ -55,7 +55,7 @@ const AddFood = () => {
                         </p>
                     </div>
                     <div>
-                        <form onSubmit={handleAddProduct} className=" lg:mx-40 mt-10 space-y-3">
+                        <form onSubmit={handleAddFood} className=" lg:mx-40 mt-10 space-y-3">
                             <div className="flex items-center justify-center w-full">
                             <DropzoneWithoutKeyboard />
                             </div> 
@@ -66,7 +66,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Food Name</span>
                                         </label>
                                         <label className="input-group ">
-                                            <input type="text" name='name' placeholder="Enter Food Name" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='FName' placeholder="Enter Food Name" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96 ">
@@ -74,7 +74,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Food Image</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='photo' placeholder="Enter Food Image URL"
+                                            <input type="text" name='FPhoto' placeholder="Enter Food Image URL"
                                                 className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
@@ -86,7 +86,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Food Quantity</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='brand' placeholder="Enter Food Quantity" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='quantity' placeholder="Enter Food Quantity" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96">
@@ -94,7 +94,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Pickup Location</span>
                                         </label>
                                         <label className="input-group ">
-                                            <input type="text" name='price' placeholder="Enter Pickup Location" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='pickup' placeholder="Enter Pickup Location" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Expired Date/Time</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='rating' placeholder="Enter Your Food Expired Date/Time" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='expired' placeholder="Enter Your Food Expired Date/Time" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96">
@@ -113,7 +113,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Donator Name</span>
                                         </label>
                                         <label className="input-group ">
-                                            <input type="text" name='type' placeholder="Enter Donator Name" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='DName' placeholder="Enter Donator Name" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Donator Email</span>
                                         </label>
                                         <label className="input-group ">
-                                            <input type="text" name='type' placeholder="Enter Donator Email" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='DEmail' placeholder="Enter Donator Email" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96">
@@ -132,7 +132,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Donator Image</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='description' placeholder="Donator Image" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='DImage' placeholder="Donator Image" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Additional Notes</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='description' placeholder="" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='notes' placeholder="" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96">
@@ -151,7 +151,7 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Food Status</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='description' placeholder="Enter Food Status" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='status' placeholder="Enter Food Status" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                 </div>

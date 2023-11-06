@@ -2,7 +2,18 @@ import { Link, NavLink } from "react-router-dom";
 import { Banner} from 'flowbite-react';
 import { HiX } from 'react-icons/hi';
 import { BsTelephone } from "react-icons/bs";
+import { useContext } from "react";
+import { AuthContext } from "../Components/Hooks/AuthProvider/AuthProvider";
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const userName= user?.displayName
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
+
     const menus = <>
         <li><NavLink
             to="/"
@@ -27,7 +38,7 @@ const Navbar = () => {
             }
         >Register</NavLink></li>
     </>
-
+    
     return (
         <div>
             {/* Donate part */}
@@ -82,7 +93,23 @@ const Navbar = () => {
                     </div></Link>
                 </div>
                 <div className="justify-end divide-y-4">
-                    <Link to='/sign-up' className="btn bg-[#1FAF4B] text-white hover:bg-secondary normal-case">Login</Link>
+                    {user ? (
+                        <>
+                            <div className="flex flex-col text-center">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img width={50} height={50} src={user.photoURL} alt={user.displayName} />
+                                    </div>
+                                </label>
+                                <p className="text-gray-700 font-semibold">{userName}</p>
+                            </div>
+                            <button onClick={handleSignOut} className="btn ml-5 
+                            bg-[#1FAF4B] text-white hover:bg-secondary normal-case">Sign Out</button>
+                        </>
+                    ) : (
+                            <Link to='/sign-up' className="btn bg-[#1FAF4B]
+                             text-white hover:bg-secondary normal-case">Login</Link>
+                    )}
                 </div>
             </div>
             <hr />

@@ -2,3 +2,7 @@
 
 ## Tech Stack
 - React-dropzone
+- React toastify
+
+## Authentication
+- Firebase
