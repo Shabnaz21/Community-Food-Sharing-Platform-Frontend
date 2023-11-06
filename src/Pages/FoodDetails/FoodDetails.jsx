@@ -1,11 +1,17 @@
 import { FaBowlFood, FaLocationArrow } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
 import { useLoaderData } from "react-router-dom";
+import { Modal} from 'flowbite-react';
+import { useRef, useState } from 'react';
 
 const FoodDetails = () => {
+    const [openModal, setOpenModal] = useState(false);
+    const emailInputRef = useRef < HTMLInputElement > (null);
     const foodData = useLoaderData();
     console.log(foodData);
-    const {foodImage, foodName, foodQuantity, additionalNotes, expiredTime, pickupLocation, donatorName, donatorImage } = foodData;
+    const { foodImage, foodName, foodQuantity,
+        additionalNotes, expiredTime, pickupLocation,
+        donatorName, donatorImage } = foodData;
     return (
         <section className="container mx-auto mt-10">
             <div>
@@ -36,7 +42,7 @@ const FoodDetails = () => {
                                                 <img className="rounded-full mx-auto"
                                                     src={donatorImage} alt="Image Description" />
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div className="">
                                             <h3 className="font-medium text-lg text-gray-800 dark:text-gray-200">
                                                 {donatorName}
@@ -74,9 +80,115 @@ const FoodDetails = () => {
                                     </div>
                                 </div>
                                 <div className="flex place-content-center">
-                                    <button className="btn btn-primary font-bold text-white w-96">
+                                    <button onClick={() => setOpenModal(true)} className="btn btn-primary font-bold text-white w-96">
                                         Request for Food</button>
+                                    <Modal show={openModal} size="2xl" popup onClose={() => setOpenModal(false)} initialFocus={emailInputRef}>
+                                        <Modal.Header />
+                                        <Modal.Body>
+                                            <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-10">
+                                                <form>
+                                                    <div className="mt-6 grid gap-4 lg:gap-6 max-w-7xl">
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                                                            <div>
+                                                                <label className="block text-sm text-gray-700 font-medium 
+                                                                ">Food Name</label>
+                                                                <input type="text"
+                                                                    name="FName"
+                                                                    className="py-3 px-4 block w-full
+                                                                     mt-2 input input-bordered" />
+                                                            </div>
+                                                            <div>
+                                                                <label className="block text-sm text-gray-700 font-medium ">Food Id </label>
+                                                                <input type="text" name="id"
+                                                                    className="py-3 px-4 block w-full mt-2 input input-bordered" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm text-gray-700 font-medium dark:text-white">Food Image </label>
+                                                            <input type="text"
+                                                                name="FImage"
+                                                                className="py-3 px-4 block w-full mt-2 input input-bordered" />
+                                                        </div>
+
+
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                                                            <div>
+                                                                <label className="block text-sm text-gray-700 font-medium ">Donator Email </label>
+                                                                <input type="text" name="DEmail"
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                            </div>
+
+                                                            <div>
+                                                                <label className="block text-sm 
+                                                                 text-gray-700 font-medium dark:text-white">Donator Name</label>
+                                                                <input type="text"
+                                                                    name="DName"
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                                                            <div>
+                                                                <label className="block text-sm text-gray-700 font-medium ">User Email </label>
+                                                                <input type="text" name="UEmail"
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                            </div>
+
+                                                            <div>
+                                                                <label className="block text-sm 
+                                                                 text-gray-700 font-medium dark:text-white">Request Date</label>
+                                                                <input type="text"
+                                                                    name="time"
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                            </div>
+
+                                                        </div>
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                                                            <div>
+                                                                <label className="block text-sm text-gray-700 font-medium ">Pickup Location</label>
+                                                                <input type="text" name="location"
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                            </div>
+
+                                                            <div>
+                                                                <label className="block text-sm 
+                                                                 text-gray-700 font-medium dark:text-white">Expire Date</label>
+                                                                <input type="text"
+                                                                    name="expired"
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                            </div>
+
+                                                        </div>
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                                                            <div>
+                                                                <label className="block text-sm text-gray-700 font-medium ">Additional Notes</label>
+                                                                <input type="text" name="notes"
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                            </div>
+                                                            <div>
+                                                                <label className="block text-sm 
+                                                                 text-gray-700 font-medium dark:text-white">Donation Money</label>
+                                                                <input type="text"
+                                                                    name="money"
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                            </div>
+
+                                                        </div>
+                                                        
+                                                    </div>
+
+
+                                                    <div className="mt-6 grid">
+                                                        <button type="submit" className=" btn btn-secondary
+                                                          text-white font-medium rounded-md
+                                                          ">Request Food</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </Modal.Body>
+                                    </Modal>
                                 </div>
+
                             </div>
 
 
@@ -87,8 +199,8 @@ const FoodDetails = () => {
                         </div>
 
                     </div>
-                    
-                  
+
+
                 </div>
             </div>
         </section>
