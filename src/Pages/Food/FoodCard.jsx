@@ -1,14 +1,10 @@
-import { useContext } from "react";
 import PropTypes from 'prop-types';
 import { FaBowlFood, FaLocationArrow } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
-import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
-    const { foodImage, foodName, foodQuantity, additionalNotes, expiredTime, pickupLocation, donatorName, donatorImage } = food;
-    const { user } = useContext(AuthContext);
-    console.log(user?.displayName );
-
+    const { _id, foodImage, foodName, foodQuantity, additionalNotes, expiredTime, pickupLocation, donatorName, donatorImage } = food;
     return (
         <>
             <div className="">
@@ -51,14 +47,16 @@ const FoodCard = ({ food }) => {
                                 </div>
                             </div>
                             <div className="mt-8 pb-8">
-                                <button
-                                    className="btn mx-auto px-4 py-2 cursor-pointer flex place-content-center
+                                <Link to={`/foods/${_id}`}>
+                                    <button
+                                        className="btn mx-auto px-4 py-2 cursor-pointer flex place-content-center
                                  bg-secondary
                                   rounded-lg text-white
                                   hover:bg-green-800 hover:text-gray-100
                                    ">
-                                    View Detail Button
-                                </button>
+                                        View Detail Button
+                                    </button>
+                                </Link>
                             </div>
 
                         </div>
