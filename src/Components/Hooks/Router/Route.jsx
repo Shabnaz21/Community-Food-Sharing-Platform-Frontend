@@ -8,6 +8,7 @@ import Root from "../../../LayOut/Root";
 import AddFood from "../../../Pages/Food/AddFood";
 import Register from "../../../Pages/User/Register";
 import Login from "../../../Pages/User/Login";
+import AvailableFood from "../../../Pages/Food/AvailableFood";
 
 
 const Route = createBrowserRouter([
@@ -17,11 +18,16 @@ const Route = createBrowserRouter([
         errorElement: <Error />,
         children: [
             {
-                path: '/',
+                index:true,
                 element: <Home />
             },
             {
-                path: '/add-food',
+                path: 'available-foods',
+                element:<AvailableFood></AvailableFood>
+            },
+
+            {
+                path: 'add-food',
                 element: <AddFood></AddFood>
             }
         ],

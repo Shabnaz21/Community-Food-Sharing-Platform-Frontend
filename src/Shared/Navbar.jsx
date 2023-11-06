@@ -32,6 +32,16 @@ const Navbar = () => {
                 isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
             }
         >Add Food</NavLink> </li>
+        <li><NavLink to='/manage-foods '
+            className={({ isActive }) =>
+                isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
+            }
+        >Manage My Foods </NavLink> </li>
+        <li><NavLink to='/request-foods '
+            className={({ isActive }) =>
+                isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
+            }
+        >My Food Request </NavLink> </li>
         <li><NavLink to='/register'
             className={({ isActive }) =>
                 isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
