@@ -19,16 +19,20 @@ const FoodCard = ({ food }) => {
                             src={foodImage}
                             alt="Food Image" />
                     </div>
-                    <div className="flex justify-start px-5 -mt-12 mb-5">
-                        <span>
-                            <img alt={user?.displayName}
-                                src={user?.photoURL}
-                                className="mx-auto object-cover rounded-full h-24 w-24 bg-white p-1" />
-                        </span>
+                    <div className="flex justify-between">
+                        <div className="flex justify-start px-5 md:-mt-12 -mt-8 mb-5">
+                            <span>
+                                <img alt={user?.displayName}
+                                    src={user?.photoURL}
+                                    className="mx-auto object-cover rounded-full h-24 w-24 bg-white p-1" />
+                            </span>
+                        </div>
+                        <div className="badge badge-primary bg-[#1FAF4B] 
+                    text-white font-semibold mt-2 mr-4">available</div>
                     </div>
                     <div className="">
                         <div className="px-7 mb-8">
-                            <h2 className="text-2xl font-bold text-green-800 dark:text-gray-300">{foodName}</h2>
+                            <h2 className="text-2xl md:text-xl font-bold text-green-800 dark:text-gray-300">{foodName}</h2>
                             <p className="text-gray-400 mt-2 dark:text-gray-400">{user?.displayName}</p>
                             <p className="mt-2 text-gray-600 dark:text-gray-300">{additionalNotes}</p>
 
@@ -46,13 +50,15 @@ const FoodCard = ({ food }) => {
                                     <p><span className="font-bold">Expired Date/Time: </span>{expiredTime}</p>
                                 </div>
                             </div>
-                            <div
-                                className="btn w-96  mx-auto px-4 py-2 cursor-pointer
-                                 bg-[#1FAF4B]
-                                 mt-8 mb-8 rounded-lg text-white
+                            <div className="mt-8 pb-8">
+                                <button
+                                    className="btn mx-auto px-4 py-2 cursor-pointer flex place-content-center
+                                 bg-secondary
+                                  rounded-lg text-white
                                   hover:bg-green-800 hover:text-gray-100
                                    ">
-                                View Detail Button
+                                    View Detail Button
+                                </button>
                             </div>
 
                         </div>

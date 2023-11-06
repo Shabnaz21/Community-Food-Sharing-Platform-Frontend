@@ -5,7 +5,8 @@ const Hero = () => {
                 <div className="flex flex-wrap items-center">
                     <div className="w-full px-4 lg:mx-auto lg:w-2/5">
                         <div className=" lg:max-w-xl">
-                            <h1 className="mb-6 text-4xl font-bold dark:text-gray-300 lg:text-6xl">
+                            <h1 className="mb-6 text-4xl font-bold dark:text-gray-300 lg:text-5xl xl:text-6xl
+                            md:text-5xl">
                                 <span>Building </span>
                                 <span className="text-blue-600 dark:text-blue-400">Bridges Through</span>
                                 <span>  Shared Meals</span>

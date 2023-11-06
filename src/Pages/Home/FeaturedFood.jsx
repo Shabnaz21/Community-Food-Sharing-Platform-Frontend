@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FoodCard from "../Food/FoodCard";
+import { Link } from "react-router-dom";
 
 const FeaturedFood = () => {
     const [foods, setFoods] = useState([]);
@@ -31,7 +32,7 @@ const FeaturedFood = () => {
                 </p>
             </div>  
             <div className='container mx-auto mt-20'>
-                <div className="grid md:grid-cols-3 mx-5 gap-4">
+                <div className="grid md:grid-cols-2 xl:grid-cols-3 mx-5 gap-4">
                     {
                         displayedFoods.map(item => <FoodCard
                             key={item.id}
@@ -40,6 +41,14 @@ const FeaturedFood = () => {
                     }
                 </div>
             </div>
+            <Link to='/available-foods'><div
+                className="btn w-96  mx-auto px-4 py-2 cursor-pointer flex place-content-center
+                                 bg-[#1FAF4B]
+                                 mt-8 mb-8 rounded-lg text-white
+                                  hover:bg-green-800 hover:text-gray-100
+                                   ">
+                Show All
+            </div></Link>
         </section>
     );
 };
