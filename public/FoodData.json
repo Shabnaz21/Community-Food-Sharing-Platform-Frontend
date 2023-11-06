@@ -78,5 +78,22 @@
         "pickupLocation": "San Francisco, CA",
         "expiredTime": "6 hours",
         "additionalNotes": "Freshly baked"
+    },
+    {
+        "foodImage": "https://images2.imgbox.com/3a/df/MJeOmbd2_o.jpg",
+        "foodName": "Egg Fried Rice",
+        "foodQuantity": 11,
+        "pickupLocation": "Denver, CO",
+        "expiredTime": "2 days",
+        "additionalNotes": "With veggies and soy sauce"
+    },
+    {
+        "foodImage": "https://images2.imgbox.com/72/c9/cSZ41Cvg_o.jpg",
+        "foodName": "Lentil Curry",
+        "foodQuantity": 10,
+        "pickupLocation": "Boston, MA",
+        "expiredTime": "2 days",
+        "additionalNotes": "Spicy and aromatic"
     }
+
 ]
