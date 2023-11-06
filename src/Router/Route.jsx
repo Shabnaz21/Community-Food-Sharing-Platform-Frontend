@@ -5,6 +5,7 @@ import {
 import Error from "../Components/Error/Error";
 import Home from "../Pages/Home/Home";
 import Root from "../LayOut/Root";
+import AddFood from "../Pages/Food/AddFood";
 
 
 const Route = createBrowserRouter([
@@ -16,6 +17,10 @@ const Route = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/add-food',
+                element:<AddFood></AddFood>
             }
         ]
 
