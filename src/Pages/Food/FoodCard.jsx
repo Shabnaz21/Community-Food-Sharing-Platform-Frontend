@@ -4,7 +4,20 @@ import { FcExpired } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
-    const { _id, foodImage, foodName, foodQuantity, additionalNotes, expiredTime, pickupLocation, donatorName, donatorImage } = food;
+    const { _id, foodImage, foodName, foodQuantity,
+        additionalNotes,
+        expiredTime, pickupLocation, donatorName,
+        donatorImage } = food;
+    
+    // Math for time
+    const formatExpiredTime = (seconds) => {
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+
+
+        return `${days} Days, ${hours} Hours`;
+    };
+
     return (
         <>
             <div className="">
@@ -43,7 +56,7 @@ const FoodCard = ({ food }) => {
                                 </div>
                                 <div className="flex gap-2 items-center">
                                     <FcExpired className="text-2xl"></FcExpired>
-                                    <p><span className="font-bold">Expired Date/Time: </span>{expiredTime}</p>
+                                    <p><span className="font-bold">Expired : </span>{formatExpiredTime(expiredTime)}</p>
                                 </div>
                             </div>
                             <div className="mt-8 pb-8">

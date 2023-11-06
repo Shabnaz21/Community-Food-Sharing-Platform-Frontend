@@ -2,16 +2,27 @@ import { FaBowlFood, FaLocationArrow } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
 import { useLoaderData } from "react-router-dom";
 import { Modal} from 'flowbite-react';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
 
 const FoodDetails = () => {
+    const { user } = useContext(AuthContext)
+    const userEmail = user?.email;
+    const currentDate = new Date().toLocaleString();
     const [openModal, setOpenModal] = useState(false);
     const emailInputRef = useRef < HTMLInputElement > (null);
     const foodData = useLoaderData();
-    console.log(foodData);
-    const { foodImage, foodName, foodQuantity,
+    const { _id, foodImage, foodName, foodQuantity,
         additionalNotes, expiredTime, pickupLocation,
-        donatorName, donatorImage } = foodData;
+        donatorName, donatorImage, donationMoney, donatorEmail } = foodData;
+    
+    // Math for time
+    const formatExpiredTime = (seconds) => {
+        const days = Math.floor(seconds / 86400); 
+        const hours = Math.floor((seconds % 86400) / 3600); 
+        return `${days} Days, ${hours} Hours`;
+    };
+
     return (
         <section className="container mx-auto mt-10">
             <div>
@@ -63,17 +74,17 @@ const FoodDetails = () => {
                                         <p className=" text-lg text-gray-800 dark:text-gray-400">
                                             <span className="text-lg font-bold">Note : </span> {additionalNotes}
                                         </p>
-                                        <div className="pt-7 mt-5 flex gap-x-8">
+                                        <div className="pt-7 mt-5 flex gap-x-6">
                                             <div className="flex items-center gap-2">
                                                 <FaBowlFood className="text-lg"></FaBowlFood>
                                                 <p className=" text-lg text-gray-800 dark:text-gray-400">
-                                                    <span className="text-lg font-bold">Food Quantity: </span> {foodQuantity}
+                                                    <span className="text-lg font-bold">Quantity: </span> {foodQuantity} person
                                                 </p>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <FcExpired className="text-2xl"></FcExpired>
                                                 <p className=" text-lg text-gray-800 dark:text-gray-400">
-                                                    <span className="text-lg font-bold">Expired Date/Time:  </span> {expiredTime}
+                                                    <span className="text-lg font-bold">Expired:  </span> {formatExpiredTime(expiredTime)}
                                                 </p>
                                             </div>
                                         </div>
@@ -94,82 +105,83 @@ const FoodDetails = () => {
                                                                 ">Food Name</label>
                                                                 <input type="text"
                                                                     name="FName"
+                                                                    defaultValue={foodName}
                                                                     className="py-3 px-4 block w-full
-                                                                     mt-2 input input-bordered" />
+                                                                     mt-2 input input-bordered" disabled/>
                                                             </div>
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Food Id </label>
-                                                                <input type="text" name="id"
-                                                                    className="py-3 px-4 block w-full mt-2 input input-bordered" />
+                                                                <input type="text" name="id" defaultValue={_id}
+                                                                    className="py-3 px-4 block w-full mt-2 input input-bordered" disabled/>
                                                             </div>
                                                         </div>
                                                         <div>
                                                             <label className="block text-sm text-gray-700 font-medium dark:text-white">Food Image </label>
                                                             <input type="text"
-                                                                name="FImage"
-                                                                className="py-3 px-4 block w-full mt-2 input input-bordered" />
+                                                                name="FImage" defaultValue={foodImage}
+                                                                className="py-3 px-4 block w-full mt-2 input input-bordered" disabled/>
                                                         </div>
 
 
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Donator Email </label>
-                                                                <input type="text" name="DEmail"
-                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                                <input type="text" name="DEmail" defaultValue={donatorEmail}
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled/>
                                                             </div>
 
                                                             <div>
                                                                 <label className="block text-sm 
                                                                  text-gray-700 font-medium dark:text-white">Donator Name</label>
                                                                 <input type="text"
-                                                                    name="DName"
-                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                                    name="DName" defaultValue={donatorName}
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled/>
                                                             </div>
                                                         </div>
 
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">User Email </label>
-                                                                <input type="text" name="UEmail"
-                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                                <input type="text" name="UEmail" defaultValue={userEmail}
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled/>
                                                             </div>
 
                                                             <div>
                                                                 <label className="block text-sm 
                                                                  text-gray-700 font-medium dark:text-white">Request Date</label>
                                                                 <input type="text"
-                                                                    name="time"
-                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                                    name="time" defaultValue={currentDate}
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled/>
                                                             </div>
 
                                                         </div>
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Pickup Location</label>
-                                                                <input type="text" name="location"
-                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" />
+                                                                <input type="text" name="location" defaultValue={pickupLocation}
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled/>
                                                             </div>
 
                                                             <div>
                                                                 <label className="block text-sm 
                                                                  text-gray-700 font-medium dark:text-white">Expire Date</label>
                                                                 <input type="text"
-                                                                    name="expired"
-                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" />
+                                                                    name="expired" defaultValue={formatExpiredTime(expiredTime)}
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled/>
                                                             </div>
 
                                                         </div>
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Additional Notes</label>
-                                                                <input type="text" name="notes"
+                                                                <input type="text" name="notes" defaultValue={additionalNotes}
                                                                     className="py-3 mt-2 input input-bordered px-4 block w-full" />
                                                             </div>
                                                             <div>
                                                                 <label className="block text-sm 
                                                                  text-gray-700 font-medium dark:text-white">Donation Money</label>
                                                                 <input type="text"
-                                                                    name="money"
+                                                                    name="money" defaultValue={donationMoney}
                                                                     className="py-3 px-4 block mt-2 input input-bordered w-full" />
                                                             </div>
 
