@@ -8,15 +8,46 @@ const AddFood = () => {
         event.preventDefault();
         const form = event.target;
         const foodName = form.FName.value;
-        const foodPhoto = form.FPhoto.value;
-        const quantity = form.quantity.value;
-        const foodStatus = form.status.value;
-        const pickup = form.pickup.value;
-        const expired = form.expired.value;
-        const notes = form.notes.value;
-        const newFood = { foodName, foodPhoto, quantity, expired,foodStatus,pickup,notes }
+        const donatorName = form.DName.value;
+        const donatorEmail = form.DEmail.value;
+        const donatorImage = form.DImage.value;
+        const foodImage = form.FPhoto.value;
+        const foodQuantity = form.quantity.value;
+        const pickupLocation = form.pickup.value;
+        const expiredTime = form.expired.value;
+        const additionalNotes = form.notes.value;
+        const newFood = {
+            foodImage, foodName,
+            foodQuantity, pickupLocation,
+            expiredTime, additionalNotes,
+            donatorName, donatorImage,
+            donatorEmail
+        }
         console.log(newFood);
         form.reset();
+
+        //send Data
+        fetch('http://localhost:5000/foods', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newFood)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Your surplus food successfully added for your neighbors',
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+            }).catch(error => {
+                console.log(error);
+            })
     }
     function DropzoneWithoutKeyboard(props) {
         const { getRootProps, getInputProps, acceptedFiles } = useDropzone({ noKeyboard: true });
@@ -94,7 +125,8 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Food Quantity</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='quantity' placeholder="Enter Food Quantity" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='quantity'
+                                                placeholder="(No. of person to be served)" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96">
@@ -102,7 +134,8 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Pickup Location</span>
                                         </label>
                                         <label className="input-group ">
-                                            <input type="text" name='pickup' placeholder="Enter Pickup Location" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='pickup'
+                                                placeholder="Enter Pickup Location" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                 </div>
@@ -113,7 +146,8 @@ const AddFood = () => {
                                             <span className="text-xl font-semibold">Expired Date/Time</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" name='expired' placeholder="Enter Your Food Expired Date/Time" className="input p-3 w-full input-bordered" />
+                                            <input type="text" name='expired'
+                                                placeholder="Enter Expired Time in second" className="input p-3 w-full input-bordered" />
                                         </label>
                                     </div>
                                     <div className="form-control w-96">
