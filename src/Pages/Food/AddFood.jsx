@@ -1,6 +1,7 @@
 import { BiCloudUpload } from "react-icons/bi";
 import Swal from "sweetalert2";
 import { useDropzone } from 'react-dropzone';
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
     const handleAddFood = event => {
@@ -45,6 +46,13 @@ const AddFood = () => {
     }
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> Share Plate | Add Food  </title>
+                <meta name='description' content='Join our community food sharing platform, reduce waste, 
+        and end hunger. Experience the taste of sustainability. Get started today!' />
+            </Helmet>
+
             <div className="container mx-auto m-20">
                 <div className="bg-[#f5fff8] rounded-xl mx-2 md:mx-5 p-2 pb-8 pt-8 ">
                     <div className="text-center ">
@@ -164,8 +172,6 @@ const AddFood = () => {
                              mt-5 p-4 w-96 font-semibold" />
                                 </div>
                             </div>
-                            
-                            
                         </form>
                     </div>
                 </div>

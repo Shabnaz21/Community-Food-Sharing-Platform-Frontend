@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
@@ -66,6 +67,13 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Share Plate | Register </title>
+                <meta name='description' content='Join our community food sharing platform, reduce waste, 
+        and end hunger. Experience the taste of sustainability. Get started today!' />
+            </Helmet>
+
             <div className="relative flex flex-col justify-center h-screen overflow-hidden mx-7 mb-10">
                 <div className="w-full p-6 m-auto bg-[#f5fff8] rounded-md shadow-md ring-2
                  ring-gray-800/50 lg:max-w-xl">

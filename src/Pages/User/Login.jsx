@@ -2,6 +2,7 @@ import { useContext, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const Login = () => {
@@ -42,6 +43,12 @@ const Login = () => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Share Plate | Log In </title>
+                <meta name='description' content='Join our community food sharing platform, reduce waste, 
+        and end hunger. Experience the taste of sustainability. Get started today!' />
+            </Helmet>
             <div className="relative flex flex-col items-center justify-center h-screen overflow-hidden mx-7">
                 <div className="w-full p-6 bg-[#f5fff8] border-t-4 border-[#11444E] 
                 rounded-md shadow-md border-top lg:max-w-lg">

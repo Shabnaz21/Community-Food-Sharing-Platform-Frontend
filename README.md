@@ -3,6 +3,8 @@
 ## Tech Stack
 - React-dropzone
 - React toastify
+- Sweet- Toast
+- React Helmet
 
 ## Authentication
 - Firebase

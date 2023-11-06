@@ -21,7 +21,7 @@ const Hero = () => {
                             </a>
                         </div>
                     </div>
-                    <div className="w-full px-4 mt-20 lg:w-2/5 lg:mt-0">
+                    <div className="w-full px-4 mt-20 lg:w-2/5 lg:mt-0 ">
                         <div className="flex justify-center lg:justify-end">
                             <div className="mr-4 lg:mr-8">
                                 <img className="block object-cover w-full h-32 mx-auto mb-8 rounded-md sm:h-64"
