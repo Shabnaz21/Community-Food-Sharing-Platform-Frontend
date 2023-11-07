@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import { useDropzone } from 'react-dropzone';
 import { Helmet } from "react-helmet";
 
+
+
 const AddFood = () => {
     const handleAddFood = event => {
         event.preventDefault();

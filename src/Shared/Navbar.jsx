@@ -32,7 +32,7 @@ const Navbar = () => {
                 isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
             }
         >Add Food</NavLink> </li>
-        <li><NavLink to='/manage-foods '
+        <li><NavLink to='/manage-foods'
             className={({ isActive }) =>
                 isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
             }
@@ -148,7 +148,7 @@ const Navbar = () => {
                     </div>
                     {/* Desktop */}
                     <div className="hidden lg:flex ">
-                        <ul className="menu menu-horizontal px-1 text-lg">
+                        <ul className="menu menu-horizontal px-2 gap-x-2 text-lg">
                             {menus}
                         </ul>
                     </div>

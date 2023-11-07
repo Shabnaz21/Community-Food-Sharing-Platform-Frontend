@@ -1,10 +1,16 @@
 # Share Plate | Connecting Communities Through Food
 
 ## Tech Stack
-- React-dropzone
+- React Dropzone
 - React toastify
-- Sweet- Toast
+- Sweet Toast
 - React Helmet
+- TanStack Table
+
+## UI
+- DaisyUI
+- Chakra UI
+- Flexbite
 
 ## Authentication
 - Firebase
