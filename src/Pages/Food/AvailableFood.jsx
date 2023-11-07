@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import FoodCard from "./FoodCard";
+import useAxios from "../../Components/Hooks/useAxios/useAxios";
 
 const AvailableFood = () => {
     const [foods, setFoods] = useState([]);
+    const axios = useAxios();
 
     useEffect(() => {
-        fetch('http://localhost:5000/foods')
-            .then(res => res.json())
-            .then(data =>
-                setFoods(data)
-            )
-    },[])
+        axios('/foods')
+            .then(data => {
+            setFoods(data.data)
+        })
+       
+    },[axios])
     
     return (
         <>

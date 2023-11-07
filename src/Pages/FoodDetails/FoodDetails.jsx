@@ -5,8 +5,10 @@ import { Modal } from 'flowbite-react';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxios from "../../Components/Hooks/useAxios/useAxios";
 
 const FoodDetails = () => {
+    const axios = useAxios();
     const { user } = useContext(AuthContext)
     const userEmail = user?.email;
     const currentDate = new Date().toLocaleString();
@@ -39,24 +41,23 @@ const FoodDetails = () => {
             notes
         }
         console.log(requestData);
-        fetch('http://localhost:5000/food-request', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestData),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire(
-                        'Congress!Your Data Recorded',
-                        'Your request info has been added.',
-                        'success'
-                    )
-                }
 
+        // request data send
+        axios.post('/food-request', requestData)
+            .then(data => {
+                console.log(data.data);
+                if (data?.data.insertedId) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Your surplus food successfully added for your neighbors',
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+            }).catch(error => {
+                console.log(error);
             })
+        
     }
     // Math for time
     const formatExpiredTime = (seconds) => {

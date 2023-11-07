@@ -2,10 +2,12 @@ import { BiCloudUpload } from "react-icons/bi";
 import Swal from "sweetalert2";
 import { useDropzone } from 'react-dropzone';
 import { Helmet } from "react-helmet";
+import useAxios from "../../Components/Hooks/useAxios/useAxios";
 
 
 
 const AddFood = () => {
+    const axios = useAxios();
     const handleAddFood = event => {
         event.preventDefault();
         const form = event.target;
@@ -28,18 +30,11 @@ const AddFood = () => {
         console.log(newFood);
         form.reset();
 
-        //send Data
-        fetch('http://localhost:5000/foods', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newFood)
-        })
-            .then(response => response.json())
+        //send Data with axios
+        axios.post('/foods', newFood)
             .then(data => {
-                console.log(data);
-                if (data.insertedId) {
+                console.log(data.data);
+                if (data?.data.insertedId) {
                     Swal.fire({
                         title: 'success',
                         text: 'Your surplus food successfully added for your neighbors',
@@ -50,6 +45,7 @@ const AddFood = () => {
             }).catch(error => {
                 console.log(error);
             })
+         
     }
     function DropzoneWithoutKeyboard(props) {
         const { getRootProps, getInputProps, acceptedFiles } = useDropzone({ noKeyboard: true });
