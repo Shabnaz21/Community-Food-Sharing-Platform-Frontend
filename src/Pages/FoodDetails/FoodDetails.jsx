@@ -1,9 +1,10 @@
 import { FaBowlFood, FaLocationArrow } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
 import { useLoaderData } from "react-router-dom";
-import { Modal} from 'flowbite-react';
+import { Modal } from 'flowbite-react';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const FoodDetails = () => {
     const { user } = useContext(AuthContext)
@@ -15,11 +16,52 @@ const FoodDetails = () => {
     const { _id, foodImage, foodName, foodQuantity,
         additionalNotes, expiredTime, pickupLocation,
         donatorName, donatorImage, donationMoney, donatorEmail } = foodData;
-    
+
+    const handleRequest = e => {
+        e.preventDefault();
+        const from = e.target;
+        const notes = from.notes.value;
+        const date = from.time.value;
+        const donatedMoney = from.money.value;
+        const userEmail = user?.email;
+        from.reset();
+
+        const requestData = {
+            foodName,
+            foodImage,
+            foodQuantity,
+            expiredTime,
+            donatorName,
+            donatorEmail,
+            pickupLocation,
+            userEmail, date,
+            donatedMoney,
+            notes
+        }
+        console.log(requestData);
+        fetch('http://localhost:5000/food-request', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire(
+                        'Congress!Your Data Recorded',
+                        'Your request info has been added.',
+                        'success'
+                    )
+                }
+
+            })
+    }
     // Math for time
     const formatExpiredTime = (seconds) => {
-        const days = Math.floor(seconds / 86400); 
-        const hours = Math.floor((seconds % 86400) / 3600); 
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
         return `${days} Days, ${hours} Hours`;
     };
 
@@ -97,7 +139,7 @@ const FoodDetails = () => {
                                         <Modal.Header />
                                         <Modal.Body>
                                             <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-10">
-                                                <form>
+                                                <form onSubmit={handleRequest}>
                                                     <div className="mt-6 grid gap-4 lg:gap-6 max-w-7xl">
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                                                             <div>
@@ -107,19 +149,19 @@ const FoodDetails = () => {
                                                                     name="FName"
                                                                     defaultValue={foodName}
                                                                     className="py-3 px-4 block w-full
-                                                                     mt-2 input input-bordered" disabled/>
+                                                                     mt-2 input input-bordered" disabled />
                                                             </div>
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Food Id </label>
                                                                 <input type="text" name="id" defaultValue={_id}
-                                                                    className="py-3 px-4 block w-full mt-2 input input-bordered" disabled/>
+                                                                    className="py-3 px-4 block w-full mt-2 input input-bordered" disabled />
                                                             </div>
                                                         </div>
                                                         <div>
                                                             <label className="block text-sm text-gray-700 font-medium dark:text-white">Food Image </label>
                                                             <input type="text"
                                                                 name="FImage" defaultValue={foodImage}
-                                                                className="py-3 px-4 block w-full mt-2 input input-bordered" disabled/>
+                                                                className="py-3 px-4 block w-full mt-2 input input-bordered" disabled />
                                                         </div>
 
 
@@ -127,7 +169,7 @@ const FoodDetails = () => {
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Donator Email </label>
                                                                 <input type="text" name="DEmail" defaultValue={donatorEmail}
-                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled/>
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled />
                                                             </div>
 
                                                             <div>
@@ -135,7 +177,7 @@ const FoodDetails = () => {
                                                                  text-gray-700 font-medium dark:text-white">Donator Name</label>
                                                                 <input type="text"
                                                                     name="DName" defaultValue={donatorName}
-                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled/>
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled />
                                                             </div>
                                                         </div>
 
@@ -143,7 +185,7 @@ const FoodDetails = () => {
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">User Email </label>
                                                                 <input type="text" name="UEmail" defaultValue={userEmail}
-                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled/>
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled />
                                                             </div>
 
                                                             <div>
@@ -151,7 +193,7 @@ const FoodDetails = () => {
                                                                  text-gray-700 font-medium dark:text-white">Request Date</label>
                                                                 <input type="text"
                                                                     name="time" defaultValue={currentDate}
-                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled/>
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled />
                                                             </div>
 
                                                         </div>
@@ -159,7 +201,7 @@ const FoodDetails = () => {
                                                             <div>
                                                                 <label className="block text-sm text-gray-700 font-medium ">Pickup Location</label>
                                                                 <input type="text" name="location" defaultValue={pickupLocation}
-                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled/>
+                                                                    className="py-3 mt-2 input input-bordered px-4 block w-full" disabled />
                                                             </div>
 
                                                             <div>
@@ -167,7 +209,7 @@ const FoodDetails = () => {
                                                                  text-gray-700 font-medium dark:text-white">Expire Date</label>
                                                                 <input type="text"
                                                                     name="expired" defaultValue={formatExpiredTime(expiredTime)}
-                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled/>
+                                                                    className="py-3 px-4 block mt-2 input input-bordered w-full" disabled />
                                                             </div>
 
                                                         </div>
@@ -186,7 +228,7 @@ const FoodDetails = () => {
                                                             </div>
 
                                                         </div>
-                                                        
+
                                                     </div>
 
 
