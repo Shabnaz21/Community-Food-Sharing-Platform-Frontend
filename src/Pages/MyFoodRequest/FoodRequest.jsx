@@ -49,17 +49,11 @@ const FoodRequest = () => {
     }
 
     const handleRequestConfirm = id => {
-        fetch(`http://localhost:5001/food-request/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'confirm' })
-        })
-            .then(res => res.json())
+        // 
+        axios.patch(`/food-request/${id}`, { status: 'available' })
             .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
+                console.log(data.data);
+                if (data?.data.modifiedCount > 0) {
                     // update state
                     const remaining = foods.filter(food => food._id !== id);
                     const updated = foods.find(food => food._id === id);
@@ -67,7 +61,7 @@ const FoodRequest = () => {
                     const newRequests = [...remaining, updated];
                     setFoods(newRequests);
                 }
-            })
+        })
     }
     return (
         <section className='container mx-auto m-10'>
