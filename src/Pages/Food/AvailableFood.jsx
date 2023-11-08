@@ -5,22 +5,25 @@ import useAxios from "../../Components/Hooks/useAxios/useAxios";
 import useAuth from "../../Components/Hooks/useAuth";
 
 import { BsSearch} from "react-icons/bs";
+import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 
 const AvailableFood = () => {
     const { loading } = useAuth();
     const [foods, setFoods] = useState([]);
     const [expiredTime, setExpiredTime] = useState('asc');
     const [foodName, setFoodName] = useState('');
+    const [page, setPage] = useState(1);
+
+    const limit = 9;
 
     const axios = useAxios();
 
     useEffect(() => {
-        axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}`)
+        axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}&page=${page}&limit=${limit}`)
             .then(data => {
-                setFoods(data.data.result)
-            })
-
-    }, [])
+                setFoods(data?.data);
+            });
+    }, [expiredTime, foodName]);
 
 
     // loading
@@ -29,6 +32,19 @@ const AvailableFood = () => {
             <span className="loading loading-dots  loading-lg"></span>
         </div>)
     }
+    const handlePervious = () => {
+        if (page > 1) {
+            setPage(page - 1);
+        }
+        
+    }
+
+    const handleNext = () => {
+        setPage(page + 1);
+    }
+        
+    const totalPage = Math.ceil((foods?.total)/limit);
+    console.log(totalPage);
     
     return (
         <>
@@ -69,7 +85,7 @@ const AvailableFood = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text font-semibold">Expired</span>
+                            <span className="label-text font-semibold">Expired Time</span>
                         </label>
                         <select
                             className="input input-bordered bg-primary p-3 text-white"
@@ -85,7 +101,7 @@ const AvailableFood = () => {
                 </div>
                 <div className="grid md:grid-cols-3 mx-5 gap-4">
                     {
-                        foods.map(item => <FoodCard
+                        foods?.result?.map(item => <FoodCard
                             key={item._id}
                             food={item}
                         />)
@@ -94,12 +110,29 @@ const AvailableFood = () => {
                 </div>
             </div>
             <div className="flex overflow-x-auto place-content-end mr-72 mb-20">
-                <div className="join">
-                    <button className="join-item btn btn-active  active:bg-primary">1</button>
-                    <button className="join-item btn  active:bg-primary">2</button>
-                    <button className="join-item btn active:bg-primary">3</button>
-                    <button className="join-item btn active:bg-primary">4</button>
-                </div>
+                {loading ? (<p>Loading...</p>) : (<div className="join">
+                    <button onClick={handlePervious}
+                        className="join-item btn ">
+                        <BiSolidLeftArrow ></BiSolidLeftArrow>
+                    </button>
+                    {
+                        Array(totalPage).fill(0)
+                            .map((item, index) => {
+                                const pageNumber = index + 1;
+                                return <button key={pageNumber}
+                                    onClick={() => setPage(pageNumber)}
+                                    className={`${pageNumber === page ? 'join-item btn btn-primary' :
+                                        'join-item btn btn-ghost'}`
+
+                                    }>
+
+                                    {pageNumber}</button>
+                            })}
+                    <button onClick={handleNext}
+                        className="join-item btn ">
+                        <BiSolidRightArrow ></BiSolidRightArrow>
+                    </button>
+                </div>)}
             </div>
         </>
     );

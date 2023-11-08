@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import useAuth from "../useAuth";
-import { useContext, useEffect } from "react";
+// import useAuth from "../useAuth";
+// import { useContext, useEffect } from "react";
 
 
 const instance = axios.create({
@@ -10,31 +9,19 @@ const instance = axios.create({
 });
 
 const useAxios = () => {
+    // const { logOut } = useAuth();
+   
+    instance.interceptors.response.use(function (response){
+        return response;
+        
+    }, function (error) {
+        if (error.response.status === 401 || error.response.status === 403) {
+            return error
+        }
+        console.log('Form Axios', error);
+    });
+
     return instance;
-
-    // const {logOut}=useAuth()
-    // console.log(logOut);
-    // const navigate = useNavigate();
-
-// useEffect(()=>{
-//     instance.interceptors.response.use(response => {
-//         console.log(response);
-//         return response;
-//     }, error => {
-//         console.log('Error tracked by interceptor', error.response);
-//         if (error.response.status === 401 || error.response.status === 403) {
-//             console.log('logout the user');
-//             logOut()
-//                 .then(() => {
-//                     navigate('/register')
-//                 })
-//                 .catch((error) => {
-//                     console.log(error);
-//                 })
-//         }
-//     })
-// }, [])
-//     return instance;
    
 };
 

@@ -80,7 +80,7 @@ const AuthProvider = ({ children }) => {
                     })
             }
             else {
-                axios.post('/logout', loggedUser, 
+                axios.post('/logOut', loggedUser, 
                )
                     .then(res => {
                         console.log(res.data)

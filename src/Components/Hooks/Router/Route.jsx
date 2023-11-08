@@ -30,19 +30,27 @@ const Route = createBrowserRouter([
             },
             {
                 path: 'manage-foods',
-                element:<ManageFoods></ManageFoods>
+                element: <PrivateRoutes>
+                    <ManageFoods></ManageFoods>
+                </PrivateRoutes>
             },
             {
                 path: 'request-foods',
-                element: <FoodRequest></FoodRequest>
+                element: <PrivateRoutes>
+                    <FoodRequest></FoodRequest>
+                </PrivateRoutes>
             },
             {
                 path: 'add-food',
-                element: <AddFood></AddFood>
+                element: <PrivateRoutes>
+                    <AddFood></AddFood>
+                </PrivateRoutes>
             },
             {
                 path: 'foods/:id', 
-                element: <PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes>,
+                element: <PrivateRoutes>
+                    <FoodDetails></FoodDetails>
+                </PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
             }
         ],
