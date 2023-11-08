@@ -3,12 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import useAxios from "../../Components/Hooks/useAxios/useAxios";
 
 
 
 const Login = () => {
     const emailRef = useRef(null);
-
+    const axios = useAxios();
     const { signIn, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,11 +24,22 @@ const Login = () => {
         // signIn User
         signIn(email, password)
             .then(result => {
-                console.log(result.user);
                 toast.success('Congratulations, you are successfully logged in!');
+                const LoggedInUser = result.user;
+                console.log(LoggedInUser);
+                const user = {
+                    email
 
-                // navigate
-                navigate(location?.state ? location.state : '/')
+                }
+                axios.post('/jwt', user)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            // navigate
+                            navigate(location?.state ? location?.state : '/')
+                        }
+                    })
+
             })
             .catch(error => {
                 if (error.code === 'auth/invalid-login-credentials') {

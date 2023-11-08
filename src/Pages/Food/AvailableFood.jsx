@@ -9,7 +9,7 @@ import { BsSearch} from "react-icons/bs";
 const AvailableFood = () => {
     const { loading } = useAuth();
     const [foods, setFoods] = useState([]);
-    const [expiredTime, setExpiredTime] = useState('');
+    const [expiredTime, setExpiredTime] = useState('asc');
     const [foodName, setFoodName] = useState('');
 
     const axios = useAxios();
