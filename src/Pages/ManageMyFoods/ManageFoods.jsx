@@ -1,7 +1,9 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import FoodData from './../../../public/FoodData.json'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import useAxios from '../../Components/Hooks/useAxios/useAxios';
+import ManageRow from './ManageRow';
+import Swal from 'sweetalert2';
 
 const columns = [
     {
@@ -64,14 +66,50 @@ const columns = [
 ];
 
 const ManageFoods = () => {
-    console.log(FoodData);
+    const axios = useAxios();
 
-const [data, setData]=useState(FoodData)
-    const table = useReactTable({
-        data, columns,
-        getCoreRowModel: getCoreRowModel()
-    });
-    console.log(table.getHeaderGroups);
+    const [foodData, setFoodData] = useState([])
+    const url = `/foods`
+    useEffect(() => {
+        axios.get(url)
+            .then(data =>
+                setFoodData(data?.data?.result))
+
+    }, [url, axios])
+
+    const handleDelete = id => {
+        const proceed = Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+        if (proceed) {
+            const url = `/foods/${id}`
+            axios.delete(url)
+                .then(data => {
+                    if (data?.data?.deletedCount > 0) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Are you sure that you want to delete it?',
+                            'success'
+                        )
+                        const remaining = foodData.filter(food => food._id !== id)
+                        setFoodData(remaining)
+                    }
+                })
+        }
+    }
+    
+//     const table = useReactTable({
+//         data, columns,
+//         getCoreRowModel: getCoreRowModel()
+//     });
+    //     console.log(table.getHeaderGroups);
+    
     return (
         <section className='container mx-auto m-5'>
             <Helmet>
@@ -102,29 +140,38 @@ const [data, setData]=useState(FoodData)
                                     <input id="checkbox-all-search" type="checkbox"
                                         className="w-4 h-4 text-blue-600
                                          bg-gray-100 border-gray-300 rounded" />
-                                        <label  className="sr-only">checkbox</label>
+                                    <label className="sr-only">checkbox</label>
                                 </div>
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Product name
+                                Food name
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Color
+                                Food image
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Category
+                                Donator Name
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Accesories
+                                Donator Email
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Available
+                                Donator Image
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Price
+                                Food Quantity
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Weight
+                                Pickup Location
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Expire Date
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                               Notes
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                              Status
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Action
@@ -132,77 +179,14 @@ const [data, setData]=useState(FoodData)
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className=" bg-white border-b
-                          hover:bg-gray-50
-                        ">
-                            <td className="w-4 p-4">
-                                <div className="flex items-center">
-                                    <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100
-                                     border-gray-300 rounded" />
-                                        <label  className="sr-only">checkbox</label>
-                                </div>
-                            </td>
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td className="px-6 py-4">
-                                Silver
-                            </td>
-                            <td className="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td className="px-6 py-4">
-                                Yes
-                            </td>
-                            <td className="px-6 py-4">
-                                Yes
-                            </td>
-                            <td className="px-6 py-4">
-                                $2999
-                            </td>
-                            <td className="px-6 py-4">
-                                3.0 lb.
-                            </td>
-                            <td className="flex items-center px-6 py-4 space-x-3">
-                                <btn className="font-medium btn btn-sm text-blue-600 hover:underline">Edit</btn>
-                                <btn className="btn btn-sm text-[#28B04B] font-semibold hover:underline">Manage</btn>
-                            </td>
-                        </tr>
-                        <tr className="bg-white border-b
-                          hover:bg-gray-50">
-                            <td className="w-4 p-4">
-                                <div className="flex items-center">
-                                    <input id="checkbox-table-search-3" type="checkbox" className="w-4 h-4 text-blue-600 
-                                    bg-gray-100 border-gray-300 rounded"/>
-                                        <label className="sr-only">checkbox</label>
-                                </div>
-                            </td>
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                AirTag
-                            </th>
-                            <td className="px-6 py-4">
-                                Silver
-                            </td>
-                            <td className="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td className="px-6 py-4">
-                                Yes
-                            </td>
-                            <td className="px-6 py-4">
-                                No
-                            </td>
-                            <td className="px-6 py-4">
-                                $29
-                            </td>
-                            <td className="px-6 py-4">
-                                53 g
-                            </td>
-                            <td className="flex items-center px-6 py-4 space-x-3">
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
-                            </td>
-                        </tr>
+                        {
+                            foodData.map(item => <ManageRow
+                                key={item._id}
+                                foodRequest={item}
+                                handleDelete={handleDelete}
+                                // handleRequestConfirm={handleRequestConfirm}
+                            ></ManageRow>)
+                        }
                     </tbody>
                 </table>
             </div>

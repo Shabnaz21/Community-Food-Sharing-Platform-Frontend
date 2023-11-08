@@ -4,25 +4,27 @@ import axios from "axios";
 
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000', 
-    withCredentials:true,
+    baseURL: 'https://share-plate-server.vercel.app',
+    withCredentials: true,
 });
 
 const useAxios = () => {
-    // const { logOut } = useAuth();
-   
-    instance.interceptors.response.use(function (response){
-        return response;
-        
-    }, function (error) {
-        if (error.response.status === 401 || error.response.status === 403) {
-            return error
-        }
-        console.log('Form Axios', error);
-    });
 
     return instance;
-   
+    // const { logOut } = useAuth();
+
+    // instance.interceptors.response.use(function (response) {
+    //     return response;
+
+    // }, function (error) {
+    //     if (error.response.status === 401 || error.response.status === 403) {
+    //         return error
+    //     }
+    //     console.log('Form Axios', error);
+    // });
+
+    
+
 };
 
 export default useAxios;

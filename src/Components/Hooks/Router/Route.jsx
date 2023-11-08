@@ -21,12 +21,12 @@ const Route = createBrowserRouter([
         errorElement: <Error />,
         children: [
             {
-                index:true,
+                index: true,
                 element: <Home />
             },
             {
                 path: 'available-foods',
-                element:<AvailableFood></AvailableFood>
+                element: <AvailableFood></AvailableFood>
             },
             {
                 path: 'manage-foods',
@@ -47,11 +47,11 @@ const Route = createBrowserRouter([
                 </PrivateRoutes>
             },
             {
-                path: 'foods/:id', 
+                path: 'foods/:id',
                 element: <PrivateRoutes>
                     <FoodDetails></FoodDetails>
                 </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://share-plate-server.vercel.app/foods/${params.id}`)
             }
         ],
     },
@@ -61,7 +61,7 @@ const Route = createBrowserRouter([
     },
     {
         path: '/sign-up',
-        element:<Login></Login>
+        element: <Login></Login>
     }
 ]);
 

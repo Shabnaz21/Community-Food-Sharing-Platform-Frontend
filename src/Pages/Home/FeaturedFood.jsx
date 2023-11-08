@@ -6,14 +6,14 @@ const FeaturedFood = () => {
     const [foods, setFoods] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/foods')
+        fetch('https://share-plate-server.vercel.app/foods')
             .then(res => res.json())
             .then(data =>
                 setFoods(data?.result)
             )
     }, [])
     const sortedFoods = [...foods].sort((a, b) => b.foodQuantity - a.foodQuantity);
-    
+
 
     // Slice the sorted array to show only the first 6 items
     const displayedFoods = sortedFoods.slice(0, 6);
@@ -29,9 +29,9 @@ const FeaturedFood = () => {
                     not only tantalize your taste buds but also help
                     reduce food waste and support those in need.
                     Join us in savoring the flavors of sustainability and solidarity.
-                    
+
                 </p>
-            </div>  
+            </div>
             <div className='container mx-auto mt-20'>
                 <div className="grid md:grid-cols-2 xl:grid-cols-3 mx-5 gap-4">
                     {
