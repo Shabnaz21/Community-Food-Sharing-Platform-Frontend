@@ -9,27 +9,26 @@ const instance = axios.create({
 });
 
 const useAxios = () => {
-    const { logOut } = useAuth();
-    const navigate = useNavigate();
-
-useEffect(()=>{
-    instance.interceptors.response.use(response => {
-        return response;
-    }, error => {
-        console.log('Error tracked by interceptor', error.response);
-        if (error.response.status === 401 || error.response.status === 403) {
-            console.log('logout the user');
-            logOut()
-                .then(() => {
-                    navigate('/register')
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
-    })
-}, [])
     return instance;
+
+// useEffect(()=>{
+//     instance.interceptors.response.use(response => {
+//         return response;
+//     }, error => {
+//         console.log('Error tracked by interceptor', error.response);
+//         if (error.response.status === 401 || error.response.status === 403) {
+//             console.log('logout the user');
+//             logOut()
+//                 .then(() => {
+//                     navigate('/register')
+//                 })
+//                 .catch((error) => {
+//                     console.log(error);
+//                 })
+//         }
+//     })
+// }, [])
+   
 };
 
 export default useAxios;

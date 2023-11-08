@@ -9,6 +9,8 @@ import {
 import { createContext, useEffect, useState } from "react";
 import app from "../Firebase/firebase.config";
 import PropTypes from 'prop-types';
+import useAxios from "../useAxios/useAxios";
+
 
 
 export const AuthContext = createContext(null);
@@ -18,6 +20,7 @@ const githubProvider = new GithubAuthProvider();
 
 
 const AuthProvider = ({ children }) => {
+    const axios = useAxios();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     // Google
@@ -67,7 +70,20 @@ const AuthProvider = ({ children }) => {
             const loggedUser = { email: userEmail }
             setUser(currentUser);
             setLoading(false);
-            
+            if (currentUser) {
+                axios.post('/jwt', loggedUser,
+                  )
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
+            else {
+                axios.post('/logout', loggedUser, 
+               )
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
         });
         return () => {
             outsider();

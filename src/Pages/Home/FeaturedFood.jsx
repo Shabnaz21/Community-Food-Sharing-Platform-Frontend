@@ -9,10 +9,11 @@ const FeaturedFood = () => {
         fetch('http://localhost:5000/foods')
             .then(res => res.json())
             .then(data =>
-                setFoods(data)
+                setFoods(data?.result)
             )
     }, [])
     const sortedFoods = [...foods].sort((a, b) => b.foodQuantity - a.foodQuantity);
+    
 
     // Slice the sorted array to show only the first 6 items
     const displayedFoods = sortedFoods.slice(0, 6);

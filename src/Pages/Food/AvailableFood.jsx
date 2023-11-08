@@ -11,14 +11,13 @@ const AvailableFood = () => {
     const [foods, setFoods] = useState([]);
     const [expiredTime, setExpiredTime] = useState('');
     const [foodName, setFoodName] = useState('');
-    console.log(expiredTime);
 
     const axios = useAxios();
 
     useEffect(() => {
         axios(`/foods?sortField=expiredTime&sortOrder=${expiredTime}`)
             .then(data => {
-                setFoods(data.data)
+                setFoods(data.data.result)
             })
 
     }, [])
@@ -84,10 +83,11 @@ const AvailableFood = () => {
                 </div>
                 <div className="grid md:grid-cols-3 mx-5 gap-4">
                     {
-                        foods?.result.map(item => <FoodCard
+                        foods?.map(item => <FoodCard
                             key={item._id}
                             food={item}
                         />)
+                        
                     }
                 </div>
             </div>
