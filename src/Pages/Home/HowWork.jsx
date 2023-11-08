@@ -9,10 +9,10 @@ const HowWork = () => {
                             Join the Food Sharing Movement
                         </h2>
                         <p className="text-base px-3 text-body-color mb-5">
-                            We're on a mission to connect those with surplus food to those in need while reducing food waste.
+                            We&apos;re on a mission to connect those with surplus food to those in need while reducing food waste.
                             This guide illustrates how individuals can connect,
                             share surplus food, and contribute to reducing food waste while addressing hunger
-                            in their local communities. Let's make a difference together!
+                            in their local communities. Let&apos;s make a difference together!
                         </p>
                     </div>
                     <div className='max-w-[920px] container mx-auto'>
@@ -54,7 +54,7 @@ const HowWork = () => {
                                         <p className="font-bold text-slate-900">Pick-Up or Drop-Off</p>
                                     </div>
                                     <div className="text-slate-500">
-                                        Choose whether you'll drop off the food or schedule a convenient pick-up location.
+                                        Choose whether you&apos;ll drop off the food or schedule a convenient pick-up location.
                                     </div>
                                 </div>
                             </div>

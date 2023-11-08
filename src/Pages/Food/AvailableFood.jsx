@@ -3,8 +3,11 @@ import { Helmet } from "react-helmet";
 import FoodCard from "./FoodCard";
 import useAxios from "../../Components/Hooks/useAxios/useAxios";
 
+
+
 const AvailableFood = () => {
     const [foods, setFoods] = useState([]);
+  
     const axios = useAxios();
 
     useEffect(() => {
@@ -44,7 +47,14 @@ const AvailableFood = () => {
                     }
                 </div>
             </div>
-        
+            <div className="flex overflow-x-auto place-content-end mr-72 mb-20">
+                <div className="join">
+                    <button className="join-item btn btn-active  active:bg-primary">1</button>
+                    <button className="join-item btn  active:bg-primary">2</button>
+                    <button className="join-item btn active:bg-primary">3</button>
+                    <button className="join-item btn active:bg-primary">4</button>
+                </div>
+            </div>
         </>
     );
 };

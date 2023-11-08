@@ -88,7 +88,7 @@ const AddFood = () => {
                         <h2 className="text-4xl m-4 font-semibold font-jost">Share Your Surplus - Add Food Listing</h2>
                         <p className="lg:max-w-3xl lg:mx-auto">
                             Make a difference by sharing your surplus food with those in need. Adding a food listing on our platform is quick and easy. Together, we can nourish our community and work towards a more sustainable future.
-                            Let's reduce food waste and address hunger, one meal at a time.
+                            Let&apos;s reduce food waste and address hunger, one meal at a time.
                         </p>
                     </div>
                     <div>

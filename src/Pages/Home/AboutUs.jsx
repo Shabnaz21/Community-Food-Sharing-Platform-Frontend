@@ -16,7 +16,7 @@ const AboutUs = () => {
                                     </h1>
                                 </div>
                                 <p className="px-4 mb-10 text-base leading-7 text-gray-500 dark:text-gray-400">
-                                    At Share Plate, we're on a mission to unite communities by sharing surplus food,
+                                    At Share Plate, we&apos;re on a mission to unite communities by sharing surplus food,
                                     reducing waste, and nourishing those in need. Join us in making a difference today.
                                 </p>
                                 <div className="flex flex-wrap items-center">
