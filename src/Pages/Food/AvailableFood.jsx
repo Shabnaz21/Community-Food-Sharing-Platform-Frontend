@@ -2,22 +2,34 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import FoodCard from "./FoodCard";
 import useAxios from "../../Components/Hooks/useAxios/useAxios";
+import useAuth from "../../Components/Hooks/useAuth";
 
 
 
 const AvailableFood = () => {
+    const { loading } = useAuth();
     const [foods, setFoods] = useState([]);
-  
+    const [expiredTime, setExpiredTime] = useState('');
+    const [foodName, setFoodName] = useState('');
+    console.log(expiredTime);
+
     const axios = useAxios();
 
     useEffect(() => {
-        axios('/foods')
+        axios(`/foods?sortField=expiredTime&sortOrder=${expiredTime}`)
             .then(data => {
-            setFoods(data.data)
-        })
-       
-    },[axios])
-    
+                setFoods(data.data)
+            })
+
+    }, [])
+
+    // loading
+    if (loading) {
+        return (<div className="flex place-content-center">
+            <span className="loading loading-dots  loading-lg"></span>
+        </div>)
+    }
+
     return (
         <>
             <Helmet>
@@ -37,10 +49,42 @@ const AvailableFood = () => {
                         Together, we can reduce food waste and nourish our neighbors in need.
                         Check out the available food listings and make a positive impact in your community!
                     </p>
-                </div> 
+                </div>
+                <div className="mb-10 flex gap-5 justify-end mr-8">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-semibold">Food Name</span>
+                        </label>
+                        <select
+                            className="input input-bordered bg-primary p-3 text-white"
+                            onChange={(e) => setFoodName(e.target.value)}
+                        >
+                            <option disabled selected>
+                                Choose one
+                            </option>
+                            
+                        </select>
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-semibold">Expired</span>
+                        </label>
+                        <select
+                            className="input input-bordered bg-primary p-3 text-white"
+                            onChange={(e) => setExpiredTime(e.target.value)}
+                        >
+                            <option disabled selected>
+                                Choose one
+                            </option>
+                            <option value="asc">From low to high</option>
+                            <option value="desc">From high to low</option>
+                        </select>
+                    </div>
+                </div>
                 <div className="grid md:grid-cols-3 mx-5 gap-4">
                     {
-                        foods.map(item => <FoodCard
+                        foods?.result.map(item => <FoodCard
                             key={item._id}
                             food={item}
                         />)

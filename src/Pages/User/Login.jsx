@@ -5,8 +5,10 @@ import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
 
 
+
 const Login = () => {
     const emailRef = useRef(null);
+
     const { signIn, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
