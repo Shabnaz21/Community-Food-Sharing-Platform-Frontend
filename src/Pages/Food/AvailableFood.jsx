@@ -4,7 +4,7 @@ import FoodCard from "./FoodCard";
 import useAxios from "../../Components/Hooks/useAxios/useAxios";
 import useAuth from "../../Components/Hooks/useAuth";
 
-
+import { BsSearch} from "react-icons/bs";
 
 const AvailableFood = () => {
     const { loading } = useAuth();
@@ -15,12 +15,13 @@ const AvailableFood = () => {
     const axios = useAxios();
 
     useEffect(() => {
-        axios(`/foods?sortField=expiredTime&sortOrder=${expiredTime}`)
+        axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}`)
             .then(data => {
                 setFoods(data.data.result)
             })
 
     }, [])
+
 
     // loading
     if (loading) {
@@ -28,7 +29,7 @@ const AvailableFood = () => {
             <span className="loading loading-dots  loading-lg"></span>
         </div>)
     }
-
+    
     return (
         <>
             <Helmet>
@@ -54,15 +55,16 @@ const AvailableFood = () => {
                         <label className="label">
                             <span className="label-text font-semibold">Food Name</span>
                         </label>
-                        <select
-                            className="input input-bordered bg-primary p-3 text-white"
-                            onChange={(e) => setFoodName(e.target.value)}
-                        >
-                            <option disabled selected>
-                                Choose one
-                            </option>
-                            
-                        </select>
+                        <div className="input-group">
+                            <input type="text" placeholder="Search…" className="input input-bordered"
+                                onChange={(e) => setFoodName(e.target.value)}
+                            />
+                           
+                            <button
+                                className="btn btn-square btn-primary">
+                                <BsSearch className="text-xl text-white"></BsSearch>
+                            </button>
+                        </div>
                     </div>
 
                     <div className="form-control">
@@ -83,7 +85,7 @@ const AvailableFood = () => {
                 </div>
                 <div className="grid md:grid-cols-3 mx-5 gap-4">
                     {
-                        foods?.map(item => <FoodCard
+                        foods.map(item => <FoodCard
                             key={item._id}
                             food={item}
                         />)

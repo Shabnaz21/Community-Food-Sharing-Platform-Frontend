@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../useAuth";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000', 
@@ -11,8 +12,13 @@ const instance = axios.create({
 const useAxios = () => {
     return instance;
 
+    // const {logOut}=useAuth()
+    // console.log(logOut);
+    // const navigate = useNavigate();
+
 // useEffect(()=>{
 //     instance.interceptors.response.use(response => {
+//         console.log(response);
 //         return response;
 //     }, error => {
 //         console.log('Error tracked by interceptor', error.response);
@@ -28,6 +34,7 @@ const useAxios = () => {
 //         }
 //     })
 // }, [])
+//     return instance;
    
 };
 

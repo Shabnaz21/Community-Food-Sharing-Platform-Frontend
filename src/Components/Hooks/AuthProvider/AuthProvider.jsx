@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
     const axios = useAxios();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(true);
     // Google
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, googleProvider)
@@ -30,6 +31,7 @@ const AuthProvider = ({ children }) => {
                 const loggedInUser = result.user;
                 setUser(loggedInUser)
                 setLoading(true);
+                setError(true)
             }).catch(error => {
                 console.log(error.message);
             })
@@ -96,6 +98,7 @@ const AuthProvider = ({ children }) => {
         loading,
         resetPassword,
         signIn,
+        error,
         handleGoogleSignIn,
         handleGithubSignIn,
         logOut
