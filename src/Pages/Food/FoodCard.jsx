@@ -2,21 +2,14 @@ import PropTypes from 'prop-types';
 import { FaBowlFood, FaLocationArrow } from "react-icons/fa6";
 import { FcExpired } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { formatExpiredTime } from '../../Utilies/TimeFormate';
 
 const FoodCard = ({ food }) => {
     const { _id, foodImage, foodName, foodQuantity,
         additionalNotes,
         expiredTime, pickupLocation, donatorName,
         donatorImage } = food;
-    
-    // Math for time
-    const formatExpiredTime = (seconds) => {
-        const days = Math.floor(seconds / 86400);
-        const hours = Math.floor((seconds % 86400) / 3600);
-
-
-        return `${days} Days, ${hours} Hours`;
-    };
+ 
 
     return (
         <>

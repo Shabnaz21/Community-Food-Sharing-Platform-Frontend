@@ -5,27 +5,27 @@ import useAxios from "../../Components/Hooks/useAxios/useAxios";
 import useAuth from "../../Components/Hooks/useAuth";
 
 import { BsSearch} from "react-icons/bs";
-import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
+// import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 
 const AvailableFood = () => {
     const { loading } = useAuth();
     const [foods, setFoods] = useState([]);
     const [expiredTime, setExpiredTime] = useState('asc');
     const [foodName, setFoodName] = useState('');
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
 
-    const limit = 9;
+    // const limit = 9;
 
     const axios = useAxios();
 
     useEffect(() => {
         // axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}
         // &page=${page}&limit=${limit}`)
-        axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}&page=${page}&limit=${limit}`)
+        axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}`)
             .then(data => {
                 setFoods(data?.data);
             });
-    }, [expiredTime, foodName, page, limit]);
+    }, [expiredTime, foodName]);
 
     // loading
     if (loading) {
@@ -33,19 +33,19 @@ const AvailableFood = () => {
             <span className="loading loading-dots  loading-lg"></span>
         </div>)
     }
-    const handlePervious = () => {
-        if (page > 1) {
-            setPage(page - 1);
-        }
+    // const handlePervious = () => {
+    //     if (page > 1) {
+    //         setPage(page - 1);
+    //     }
         
-    }
+    // }
 
-    const handleNext = () => {
-        setPage(page + 1);
-    }
+    // const handleNext = () => {
+    //     setPage(page + 1);
+    // }
         
-    const totalPage = Math.ceil((foods?.total)/limit);
-    console.log(totalPage);
+    // const totalPage = Math.ceil((foods?.total)/limit);
+    // console.log(totalPage);
     
     return (
         <>
@@ -110,7 +110,7 @@ const AvailableFood = () => {
                     }
                 </div>
             </div>
-            <div className="flex overflow-x-auto place-content-end mr-72 mb-20">
+            {/* <div className="flex overflow-x-auto place-content-end mr-72 mb-20">
                 {loading ? (<p>Loading...</p>) : (<div className="join">
                     <button onClick={handlePervious}
                         className="join-item btn ">
@@ -134,7 +134,7 @@ const AvailableFood = () => {
                         <BiSolidRightArrow ></BiSolidRightArrow>
                     </button>
                 </div>)}
-            </div>
+            </div> */}
         </>
     );
 };

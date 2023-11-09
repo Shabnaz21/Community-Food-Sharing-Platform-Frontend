@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formatExpiredTime } from "../../Utilies/TimeFormate";
 
 
 const ManageRow = ({ foodRequest, handleDelete }) => {
@@ -6,11 +7,6 @@ const ManageRow = ({ foodRequest, handleDelete }) => {
         expiredTime, date, donatedMoney, additionalNotes, status,  donatorEmail, donatorImage, foodQuantity
     } = foodRequest;
 
-    const formatExpiredTime = (seconds) => {
-        const days = Math.floor(seconds / 86400);
-        const hours = Math.floor((seconds % 86400) / 3600);
-        return `${days} Days, ${hours} Hours`;
-    };
 
     return (
         <>

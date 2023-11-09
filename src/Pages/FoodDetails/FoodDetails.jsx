@@ -6,6 +6,7 @@ import { useContext, useRef, useState } from 'react';
 import { AuthContext } from "../../Components/Hooks/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxios from "../../Components/Hooks/useAxios/useAxios";
+import { formatExpiredTime } from "../../Utilies/TimeFormate";
 
 const FoodDetails = () => {
     const axios = useAxios();
@@ -59,12 +60,6 @@ const FoodDetails = () => {
             })
         
     }
-    // Math for time
-    const formatExpiredTime = (seconds) => {
-        const days = Math.floor(seconds / 86400);
-        const hours = Math.floor((seconds % 86400) / 3600);
-        return `${days} Days, ${hours} Hours`;
-    };
 
     return (
         <section className="container mx-auto mt-10">
