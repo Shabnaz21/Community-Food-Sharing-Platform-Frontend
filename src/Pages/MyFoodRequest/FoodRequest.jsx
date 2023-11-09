@@ -47,21 +47,7 @@ const FoodRequest = () => {
                 } )
         }
     }
-    const handleRequestConfirm = id => {
-        // 
-        axios.patch(`/food-request/${id}`, { status: 'available' })
-            .then(data => {
-                console.log(data.data);
-                if (data?.data.modifiedCount > 0) {
-                    // update state
-                    const remaining = foods.filter(food => food._id !== id);
-                    const updated = foods.find(food => food._id === id);
-                    updated.status = 'available'
-                    const newRequests = [...remaining, updated];
-                    setFoods(newRequests);
-                }
-        })
-    }
+    
     return (
         <section className='container mx-auto m-10'>
             <Helmet>
@@ -113,9 +99,6 @@ const FoodRequest = () => {
                                 Your Donation Amount
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Status
-                            </th>
-                            <th scope="col" className="px-6 py-3">
                                 Action
                             </th>
                         </tr>
@@ -126,7 +109,7 @@ const FoodRequest = () => {
                                 key={item._id}
                                 foodRequest={item}
                                 handleDelete={handleDelete}
-                                handleRequestConfirm={handleRequestConfirm}
+                                // handleRequestConfirm={handleRequestConfirm}
                             ></RequestRow>)
                         }
                     </tbody>

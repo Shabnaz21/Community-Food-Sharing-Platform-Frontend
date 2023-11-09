@@ -13,7 +13,7 @@ const UpdateMyFood = () => {
     
 
     const handleEdit = id => {
-        event.preventDefault();
+
         axios.patch(`/foods/${id}`, { status: 'Deliver' })
             .then(data => {
                 console.log(data.data);

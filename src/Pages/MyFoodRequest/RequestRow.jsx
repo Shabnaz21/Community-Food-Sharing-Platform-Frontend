@@ -1,7 +1,7 @@
 import { formatExpiredTime } from "../../Utilies/TimeFormate";
 
 
-const RequestRow = ({ foodRequest, handleDelete, handleRequestConfirm }) => {
+const RequestRow = ({ foodRequest, handleDelete }) => {
     const { _id, foodImage, foodName, donatorName, pickupLocation, expiredTime, date, donatedMoney, status
  } = foodRequest;
     
@@ -44,11 +44,6 @@ const RequestRow = ({ foodRequest, handleDelete, handleRequestConfirm }) => {
                 </td>
                 <td className="px-6 py-4 text-center">
                     {donatedMoney}
-                </td>
-                <td className="px-6 py-4">
-                    {
-                        status === 'available' ? <span className="font-bold text-primary">Delivered</span> :
-                            <button onClick={() => handleRequestConfirm(_id)} className="btn btn-ghost btn-xs">Available</button>}
                 </td>
                 <td className="flex items-center px-6 py-10 ">
                     <btn onClick={() => handleDelete(_id)} className="font-medium btn btn-sm text-red-600 hover:underline">Cancel Request </btn>

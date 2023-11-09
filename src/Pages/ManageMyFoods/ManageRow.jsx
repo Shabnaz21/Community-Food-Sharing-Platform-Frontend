@@ -61,7 +61,8 @@ const ManageRow = ({ foodRequest, handleDelete }) => {
                         <button className="font-medium btn btn-sm text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
                         
                     </Link>
-                    <Link className="font-medium btn btn-sm text-green-600 dark:text-blue-500 hover:underline">Manage</Link>
+                    <Link to={`/manage-my-food/${_id}`}
+                        className="font-medium btn btn-sm text-green-600 dark:text-blue-500 hover:underline">Manage</Link>
                     <Link onClick={() => handleDelete(_id)}  className="font-medium btn btn-sm text-red-600 dark:text-red-500 hover:underline">Remove</Link>
                 </td>
             </tr>
