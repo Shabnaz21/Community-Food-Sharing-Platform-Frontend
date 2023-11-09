@@ -81,6 +81,22 @@ const ManageFoods = () => {
 
     }, [url, axios])
 
+    const handleEdit = id => {
+        // 
+        axios.patch(`/foods/${id}`)
+            .then(data => {
+                console.log(data.data);
+                if (data?.data.modifiedCount > 0) {
+                    // update state
+                    const remaining = foodData.filter(food => food._id !== id);
+                    const updated = foodData.find(food => food._id === id);
+                    updated.status = 'available'
+                    const newRequests = [...remaining, updated];
+                    setFoodData(newRequests);
+                }
+            })
+    }
+
 
     const handleDelete = id => {
         const proceed = Swal.fire({
@@ -108,6 +124,7 @@ const ManageFoods = () => {
                 })
         }
     }
+
     
 //     const table = useReactTable({
 //         data, columns,
@@ -183,7 +200,7 @@ const ManageFoods = () => {
                                 key={item._id}
                                 foodRequest={item}
                                 handleDelete={handleDelete}
-                                // handleRequestConfirm={handleRequestConfirm}
+                                handleEdit={handleEdit}
                             ></ManageRow>)
                         }
                     </tbody>
