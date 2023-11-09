@@ -54,17 +54,17 @@ const Route = createBrowserRouter([
                 element: <PrivateRoutes>
                     <FoodDetails></FoodDetails>
                 </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://share-plate-server.vercel.app/foods/${params.id}`)
             },
             {
                 path: 'update-my-food/:id',
                 element: <PrivateRoutes><UpdateMyFood></UpdateMyFood></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
-            }, 
+                loader: ({ params }) => fetch(`https://share-plate-server.vercel.app/foods/${params.id}`)
+            },
             {
                 path: 'manage-my-food/:id',
                 element: <PrivateRoutes><FoodsManage></FoodsManage></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://share-plate-server.vercel.app/foods/${params.id}`)
 
             }
         ],

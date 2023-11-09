@@ -9,6 +9,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import app from "../Firebase/firebase.config";
 import PropTypes from 'prop-types';
+// import useAxios from "../useAxios/useAxios";
 
 
 
@@ -20,6 +21,8 @@ const githubProvider = new GithubAuthProvider();
 
 
 const AuthProvider = ({ children }) => {
+    // const axios = useAxios();
+
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(true);
