@@ -19,12 +19,13 @@ const AvailableFood = () => {
     const axios = useAxios();
 
     useEffect(() => {
+        // axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}
+        // &page=${page}&limit=${limit}`)
         axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}&page=${page}&limit=${limit}`)
-        // axios.get(`/foods?sortField=expiredTime&sortOrder=${expiredTime}&foodName=${foodName}`)
             .then(data => {
                 setFoods(data?.data);
             });
-    }, [expiredTime, foodName]);
+    }, [expiredTime, foodName, page, limit]);
 
     // loading
     if (loading) {
@@ -32,19 +33,19 @@ const AvailableFood = () => {
             <span className="loading loading-dots  loading-lg"></span>
         </div>)
     }
-    // const handlePervious = () => {
-    //     if (page > 1) {
-    //         setPage(page - 1);
-    //     }
+    const handlePervious = () => {
+        if (page > 1) {
+            setPage(page - 1);
+        }
         
-    // }
+    }
 
-    // const handleNext = () => {
-    //     setPage(page + 1);
-    // }
+    const handleNext = () => {
+        setPage(page + 1);
+    }
         
-    // const totalPage = Math.ceil((foods?.total)/limit);
-    // console.log(totalPage);
+    const totalPage = Math.ceil((foods?.total)/limit);
+    console.log(totalPage);
     
     return (
         <>
@@ -109,7 +110,7 @@ const AvailableFood = () => {
                     }
                 </div>
             </div>
-            {/* <div className="flex overflow-x-auto place-content-end mr-72 mb-20">
+            <div className="flex overflow-x-auto place-content-end mr-72 mb-20">
                 {loading ? (<p>Loading...</p>) : (<div className="join">
                     <button onClick={handlePervious}
                         className="join-item btn ">
@@ -133,7 +134,7 @@ const AvailableFood = () => {
                         <BiSolidRightArrow ></BiSolidRightArrow>
                     </button>
                 </div>)}
-            </div> */}
+            </div>
         </>
     );
 };

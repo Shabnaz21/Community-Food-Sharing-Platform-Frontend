@@ -6,7 +6,7 @@ const FeaturedFood = () => {
     const [foods, setFoods] = useState([]);
 
     useEffect(() => {
-        fetch('https://share-plate-server.vercel.app/foods')
+        fetch('http://localhost:5000/foods')
             .then(res => res.json())
             .then(data =>
                 setFoods(data?.result)

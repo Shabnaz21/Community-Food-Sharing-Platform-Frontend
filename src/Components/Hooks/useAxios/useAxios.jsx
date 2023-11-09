@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const instance = axios.create({
-    baseURL: 'https://share-plate-server.vercel.app',
+    baseURL: 'http://localhost:5000',
     withCredentials: true,
 });
 
@@ -23,7 +23,7 @@ const useAxios = () => {
     //     console.log('Form Axios', error);
     // });
 
-    
+
 
 };
 

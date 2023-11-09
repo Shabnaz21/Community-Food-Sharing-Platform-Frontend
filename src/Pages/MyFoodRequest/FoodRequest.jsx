@@ -16,7 +16,7 @@ const FoodRequest = () => {
     useEffect(() => {
         axios.get(url)
             .then(data =>
-                setFoods(data.data))
+                setFoods(data?.data))
         
     }, [url, axios])
 
