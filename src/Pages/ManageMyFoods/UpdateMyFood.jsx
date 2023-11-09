@@ -1,11 +1,39 @@
 import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
+import useAxios from "../../Components/Hooks/useAxios/useAxios";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const UpdateMyFood = () => {
     const foodData = useLoaderData();
-    const {foodImage, foodName, foodQuantity,
+    const {_id, foodImage, foodName, foodQuantity,
         additionalNotes, expiredTime, pickupLocation, donatorEmail } = foodData;
+    const axios = useAxios();
+    const [foods, setFoods] = useState([]);
+    
 
+    const handleEdit = id => {
+        event.preventDefault();
+        axios.patch(`/foods/${id}`, { status: 'Deliver' })
+            .then(data => {
+                console.log(data.data);
+                if (data?.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Your surplus food successfully Update for your neighbors',
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                    // update state
+                    const remaining = foods.filter(food => food._id !== id);
+                    const updated = foods.find(food => food._id === id);
+                    updated.status = 'Deliver'
+                    const newRequests = [...remaining, updated];
+                    setFoods(newRequests);
+                }
+            })
+        
+    }
     return (
         <section>
             <Helmet>
@@ -116,7 +144,9 @@ const UpdateMyFood = () => {
                                 </div>
                                 {/* Button */}
                                 <div className="form-control flex place-content-center">
-                                    <input type="submit" value="Updated Your Food"
+                                    <input type="submit"
+                                        onClick={() => handleEdit(_id)}
+                                        value="Updated Your Food"
                                         className="text-xl font-Rancho 
                             rounded-xl bg-primary text-white border-2
                              hover:text-white md:w-[100%] xl:w-[95%]

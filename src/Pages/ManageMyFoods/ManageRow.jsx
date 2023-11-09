@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
 import { formatExpiredTime } from "../../Utilies/TimeFormate";
-import { Modal } from "flowbite-react";
-import { useRef, useState } from "react";
 
 
-const ManageRow = ({ foodRequest, handleDelete, handleEdit }) => {
-    const [openModal, setOpenModal] = useState(false);
-    const emailInputRef = useRef < HTMLInputElement > (null);
+const ManageRow = ({ foodRequest, handleDelete }) => {
     const { _id, foodImage, foodName, donatorName, pickupLocation,
         expiredTime, status, donatorEmail, foodQuantity
     } = foodRequest;
@@ -62,7 +58,7 @@ const ManageRow = ({ foodRequest, handleDelete, handleEdit }) => {
                 </td>
                 <td className="grid grid-rows-3 items-center px-2 py-10 gap-5 mr-18 place-content-center">
                     <Link to={`/update-my-food/${_id}`}>
-                        <button onClick={() => handleEdit(_id)} className="font-medium btn btn-sm text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                        <button className="font-medium btn btn-sm text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
                         
                     </Link>
                     <Link className="font-medium btn btn-sm text-green-600 dark:text-blue-500 hover:underline">Manage</Link>
