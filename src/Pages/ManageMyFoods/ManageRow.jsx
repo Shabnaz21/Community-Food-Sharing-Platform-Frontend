@@ -4,7 +4,7 @@ import { formatExpiredTime } from "../../Utilies/TimeFormate";
 
 const ManageRow = ({ foodRequest, handleDelete }) => {
     const { _id, foodImage, foodName, donatorName, pickupLocation,
-        expiredTime, date, donatedMoney, additionalNotes, status,  donatorEmail, donatorImage, foodQuantity
+        expiredTime, status, donatorEmail, foodQuantity
     } = foodRequest;
 
 
@@ -43,13 +43,6 @@ const ManageRow = ({ foodRequest, handleDelete }) => {
                     {donatorEmail}
                 </td>
                 <td className="px-6 py-4">
-                    <div className="avatar">
-                        <div className="rounded-xl w-20 h-20">
-                            <img src={donatorImage} alt={donatorName} />
-                        </div>
-                    </div>
-                </td>
-                <td className="px-6 py-4">
                     {foodQuantity}
                 </td>
                 <td className="px-6 py-4">
@@ -57,9 +50,6 @@ const ManageRow = ({ foodRequest, handleDelete }) => {
                 </td>
                 <td className="px-6 py-4">
                     {formatExpiredTime(expiredTime)}
-                </td>
-                <td className="px-6 py-4">
-                    {additionalNotes}
                 </td>
                 <td className="px-6 py-4">
                     {

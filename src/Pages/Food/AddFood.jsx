@@ -141,7 +141,7 @@ const AddFood = () => {
                                 <div className="md:flex gap-20">
                                     <div className="form-control w-96">
                                         <label className="label">
-                                            <span className="text-xl font-semibold">Expired Date/Time</span>
+                                            <span className="text-xl font-semibold">Expired Time</span>
                                         </label>
                                         <label className="input-group">
                                             <input type="text" name='expired'

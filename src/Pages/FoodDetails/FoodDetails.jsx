@@ -10,8 +10,11 @@ import { formatExpiredTime } from "../../Utilies/TimeFormate";
 
 const FoodDetails = () => {
     const axios = useAxios();
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
+    console.log(user);
+    const userName = user?.displayName;
     const userEmail = user?.email;
+    const userPhoto = user?.photoURL;
     const currentDate = new Date().toLocaleString();
     const [openModal, setOpenModal] = useState(false);
     const emailInputRef = useRef < HTMLInputElement > (null);
@@ -37,7 +40,10 @@ const FoodDetails = () => {
             donatorName,
             donatorEmail,
             pickupLocation,
-            userEmail, date,
+            userName,
+            userEmail,
+            userPhoto,
+            date,
             donatedMoney,
             notes
         }

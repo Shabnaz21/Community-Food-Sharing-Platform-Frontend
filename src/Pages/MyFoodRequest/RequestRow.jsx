@@ -1,15 +1,9 @@
+import { formatExpiredTime } from "../../Utilies/TimeFormate";
 
 
 const RequestRow = ({ foodRequest, handleDelete, handleRequestConfirm }) => {
     const { _id, foodImage, foodName, donatorName, pickupLocation, expiredTime, date, donatedMoney, status
  } = foodRequest;
-    
-    // Math for time
-    const formatExpiredTime = (seconds) => {
-        const days = Math.floor(seconds / 86400);
-        const hours = Math.floor((seconds % 86400) / 3600);
-        return `${days} Days, ${hours} Hours`;
-    };
     
     return (
         <>

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import useAxios from '../../Components/Hooks/useAxios/useAxios';
 import ManageRow from './ManageRow';
 import Swal from 'sweetalert2';
+import useAuth from '../../Components/Hooks/useAuth';
 
 const columns = [
     {
@@ -67,15 +68,19 @@ const columns = [
 
 const ManageFoods = () => {
     const axios = useAxios();
-
+    const { user } = useAuth();
+    const userEmail = user?.email
     const [foodData, setFoodData] = useState([])
-    const url = `/foods`
+    
+    const url = `/foods?donatorEmail=${userEmail}`
     useEffect(() => {
         axios.get(url)
             .then(data =>
-                setFoodData(data?.data?.result))
+                setFoodData(data.data.result)
+            )
 
     }, [url, axios])
+
 
     const handleDelete = id => {
         const proceed = Swal.fire({
@@ -156,9 +161,6 @@ const ManageFoods = () => {
                                 Donator Email
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Donator Image
-                            </th>
-                            <th scope="col" className="px-6 py-3">
                                 Food Quantity
                             </th>
                             <th scope="col" className="px-6 py-3">
@@ -166,9 +168,6 @@ const ManageFoods = () => {
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Expire Date
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                               Notes
                             </th>
                             <th scope="col" className="px-6 py-3">
                               Status
