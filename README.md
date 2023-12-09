@@ -2,7 +2,7 @@
 
 Share Plate is a Community Food Sharing Platform that aims to foster connection and support among communities through the sharing of food. 
 
-[Server side](https://github.com/Porgramming-Hero-web-course/b8a11-server-side-Shabnaz21) | [Live Link](https://share-plate-1d8b2.web.app)
+[Server side](https://github.com/Shabnaz21/Community-Food-Sharing-Platform-Backend) | [Live Link](https://share-plate-1d8b2.web.app)
 
 ## Project Features
 
