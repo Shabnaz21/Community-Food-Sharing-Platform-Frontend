@@ -4,8 +4,6 @@ import { useDropzone } from 'react-dropzone';
 import { Helmet } from "react-helmet";
 import useAxios from "../../Components/Hooks/useAxios/useAxios";
 
-
-
 const AddFood = () => {
     const axios = useAxios();
     const handleAddFood = event => {

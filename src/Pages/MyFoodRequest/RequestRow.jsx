@@ -46,7 +46,8 @@ const RequestRow = ({ foodRequest, handleDelete }) => {
                     {donatedMoney}
                 </td>
                 <td className="flex items-center px-6 py-10 ">
-                    <btn onClick={() => handleDelete(_id)} className="font-medium btn btn-sm text-red-600 hover:underline">Cancel Request </btn>
+                    <btn onClick={() => handleDelete(_id)} className="font-medium btn btn-sm bg-white
+                     text-red-600 hover:underline">Cancel Request </btn>
                 </td>
             </tr>
 

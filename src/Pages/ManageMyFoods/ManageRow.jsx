@@ -58,12 +58,15 @@ const ManageRow = ({ foodRequest, handleDelete }) => {
                 </td>
                 <td className="grid grid-rows-3 items-center px-2 py-10 gap-5 mr-18 place-content-center">
                     <Link to={`/update-my-food/${_id}`}>
-                        <button className="font-medium btn btn-sm text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                        <button className="font-medium btn btn-sm bg-white
+                         text-blue-600 dark:text-blue-500
+                         hover:underline">Edit</button>
                         
                     </Link>
                     <Link to={`/manage-my-food/${_id}`}
-                        className="font-medium btn btn-sm text-green-600 dark:text-blue-500 hover:underline">Manage</Link>
-                    <Link onClick={() => handleDelete(_id)}  className="font-medium btn btn-sm text-red-600 dark:text-red-500 hover:underline">Remove</Link>
+                        className="font-medium btn btn-sm 
+                        text-green-600 bg-white dark:text-blue-50 0 hover:underline">Manage</Link>
+                    <Link onClick={() => handleDelete(_id)} className="font-medium btn btn-sm bg-white text-red-600 dark:text-red-500 hover:underline">Remove</Link>
                 </td>
             </tr>
 

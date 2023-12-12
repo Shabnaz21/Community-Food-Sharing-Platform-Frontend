@@ -12,6 +12,7 @@ const Footer = () => {
                             <p className=" text-xl font-jost ml-2 lg:text-4xl">SHARE PLATE</p>
                         </div></Link>
                         <p className="text-left block lg:block md:hidden">Join our mission to fight food waste and hunger with our Community <br /> Food Sharing Platform. Connect surplus food donors with those in need, <br />fostering sustainability and community support.</p>
+                        
                         <div className="flex gap-3 text-xl ">
                             <p><BsFacebook></BsFacebook></p>
                             <p><BsTwitter></BsTwitter></p>

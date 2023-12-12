@@ -148,6 +148,7 @@ const UpdateMyFood = () => {
                                         onClick={() => handleEdit(_id)}
                                         value="Updated Your Food"
                                         className="text-xl font-Rancho 
+                                        
                             rounded-xl bg-primary text-white border-2
                              hover:text-white md:w-[100%] xl:w-[95%]
                              mt-5 p-4 w-96 font-semibold" />
