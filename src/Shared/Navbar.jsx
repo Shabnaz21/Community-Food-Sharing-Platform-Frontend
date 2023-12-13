@@ -6,13 +6,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Components/Hooks/AuthProvider/AuthProvider";
 const Navbar = () => {
 
-    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'emerald');
 
     const handleToggle = (e) => {
         if (e.target.checked) {
-            setTheme('dark')
+            setTheme('forest')
         } else {
-            setTheme("light");
+            setTheme('emerald');
         }
     }
 

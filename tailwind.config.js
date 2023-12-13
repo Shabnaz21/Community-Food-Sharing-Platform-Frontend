@@ -14,7 +14,7 @@ export default {
   },
   plugins: [require("daisyui"), ('flowbite/plugin')],
   daisyui: {
-    themes: ['emerald', 'dark'], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
+    themes: ['emerald', 'forest'], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
   },
 }
 
