@@ -15,6 +15,9 @@ import ManageFoods from "../../../Pages/ManageMyFoods/ManageFoods";
 import FoodRequest from "../../../Pages/MyFoodRequest/FoodRequest";
 import UpdateMyFood from "../../../Pages/ManageMyFoods/UpdateMyFood";
 import FoodsManage from "../../../Pages/ManageMyFoods/SingleFoodManage/FoodsManage";
+import DashboardLayout from "../../../Dashboard/layout/DashboardLayout";
+import Dashboard from "../../../Dashboard/Dashboard";
+import UserProfile from "../../../Dashboard/User/UserProfile";
 
 
 const Route = createBrowserRouter([
@@ -37,12 +40,7 @@ const Route = createBrowserRouter([
                     <ManageFoods></ManageFoods>
                 </PrivateRoutes>,
             },
-            {
-                path: 'request-foods',
-                element: <PrivateRoutes>
-                    <FoodRequest></FoodRequest>
-                </PrivateRoutes>
-            },
+            
             {
                 path: 'add-food',
                 element: <PrivateRoutes>
@@ -76,6 +74,29 @@ const Route = createBrowserRouter([
     {
         path: '/sign-up',
         element: <Login></Login>
+    }, 
+    {
+        path: 'dashboard',
+        element: <PrivateRoutes>
+            <DashboardLayout></DashboardLayout>
+        </PrivateRoutes>,
+        children: [
+            {
+                index: true,
+                element: <Dashboard></Dashboard>
+            },
+            {
+                path: 'user-profile',
+                element: <UserProfile></UserProfile>
+            },
+            {
+                path: 'request-foods',
+                element: <PrivateRoutes>
+                    <FoodRequest></FoodRequest>
+                </PrivateRoutes>
+            },
+
+        ]
     }
 ]);
 

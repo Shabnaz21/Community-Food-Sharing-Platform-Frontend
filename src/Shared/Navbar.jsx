@@ -68,11 +68,6 @@ const Navbar = () => {
                 isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
             }
         >Manage My Foods </NavLink> </li>
-        <li><NavLink to='/request-foods '
-            className={({ isActive }) =>
-                isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
-            }
-        >My Food Request </NavLink> </li>
         <li><NavLink to='/register'
             className={({ isActive }) =>
                 isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
@@ -137,7 +132,7 @@ const Navbar = () => {
                     <div>
                         {user ? (
                             <>
-                                <div className="flex flex-col text-center">
+                                {/* <div className="flex flex-col text-center">
                                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
                                             <img width={50} height={50} src={user.photoURL} alt={user.displayName} />
@@ -146,7 +141,24 @@ const Navbar = () => {
                                     <p className="text-gray-700 font-semibold">{userName}</p>
                                 </div>
                                 <button onClick={handleSignOut} className="btn ml-5 
-                            bg-[#1FAF4B] text-white hover:bg-secondary normal-case">Sign Out</button>
+                            bg-[#1FAF4B] text-white hover:bg-secondary normal-case">Sign Out</button> */}
+                                
+                                <div className="flex-none gap-2">
+                                    <div className="dropdown dropdown-end">
+                                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                            <div className="w-12 rounded-full">
+                                                <img alt={userName} src={user.photoURL} />
+                                            </div>
+                                        </div>
+                                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                            <li>
+                                                <Link to='dashboard/user-profile'
+                                                >Profile</Link>
+                                            </li>
+                                            <li><a onClick={handleSignOut}>Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </>
                         ) : (
                             <Link to='/sign-up' className="btn bg-[#1FAF4B]
